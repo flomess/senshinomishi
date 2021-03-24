@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -30,7 +31,6 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="date")
      */
-
     private $date_inscription;
 
     /**
@@ -56,12 +56,12 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="integer")
      */
-    private $nb_parties;
+    private $nb_parties = 0;
 
     /**
      * @ORM\Column(type="integer")
      */
-    private $nb_victoires;
+    private $nb_victoires = 0;
 
     /**
      * @ORM\OneToMany(targetEntity=Game::class, mappedBy="user1")
@@ -74,9 +74,9 @@ class User implements UserInterface
     private $games2;
 
     /**
-     * @ORM\Column(type="json")
+     * @ORM\Column(type="string")
      */
-    private $role;
+    private $roles = 'ROLE_USER';
 
     /**
      * @ORM\Column(type="boolean")
@@ -255,9 +255,9 @@ class User implements UserInterface
      */
     public function getRoles(): array
     {
-        $roles = $this->roles;
+        $roles[] = $this->roles;
         // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_JOUEUR';
+        $roles[] = 'ROLE_USER';
 
         return array_unique($roles);
     }
@@ -310,4 +310,5 @@ class User implements UserInterface
 
         return $this;
     }
+
 }

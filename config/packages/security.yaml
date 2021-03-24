@@ -40,4 +40,4 @@ security:
     access_control:
         - { path: ^/admin, roles: ROLE_ADMIN }
         - { path: ^/jeu, roles: ROLE_JOUEUR }
-        - { path: ^/profil, roles: ROLE_JOUEUR }
+        - { path: ^/profil, roles: ROLE_USER }
