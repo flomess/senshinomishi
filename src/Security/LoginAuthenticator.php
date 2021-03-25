@@ -71,7 +71,11 @@ class LoginAuthenticator extends AbstractFormLoginAuthenticator implements Passw
 
         if (!$user) {
             // fail authentication with a custom error
-            throw new CustomUserMessageAuthenticationException('Pseudo could not be found.');
+            throw new CustomUserMessageAuthenticationException('Le pseudo spécifié est incorrect.');
+        }
+        $verif = [$user->isVerified()];
+        if ($verif=='false'){
+            throw new CustomUserMessageAuthenticationException('Veuillez vérifier votre adresse mail.');
         }
 
         return $user;
@@ -97,7 +101,7 @@ class LoginAuthenticator extends AbstractFormLoginAuthenticator implements Passw
         }
 
         // For example : return new RedirectResponse($this->urlGenerator->generate('some_route'));
-        return new RedirectResponse($this->urlGenerator->generate('new_game'));
+        return new RedirectResponse($this->urlGenerator->generate('profil'));
     }
 
     protected function getLoginUrl()
