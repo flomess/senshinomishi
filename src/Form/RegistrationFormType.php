@@ -36,13 +36,9 @@ class RegistrationFormType extends AbstractType
                 'first_options'  => ['label' => 'Mot de passe'],
                 'second_options' => ['label' => 'Mot de passe (confirmation)'],
             ])
-            ->add('mail', RepeatedType::class, [
-                'type' => EmailType::class,
+            ->add('mail', EmailType::class, [
                 'invalid_message' => 'Les deux adresses mail doivent correspondre.',
-                'options' => ['attr' => ['class' => 'email-field']],
-                'required' => true,
-                'first_options'  => ['label' => 'Email'],
-                'second_options' => ['label' => 'Email (confirmation)'],
+                'required' => true
             ])
         ;
     }

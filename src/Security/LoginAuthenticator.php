@@ -73,17 +73,19 @@ class LoginAuthenticator extends AbstractFormLoginAuthenticator implements Passw
             // fail authentication with a custom error
             throw new CustomUserMessageAuthenticationException('Le pseudo spécifié est incorrect.');
         }
-        $verif = [$user->isVerified()];
-        if ($verif=='false'){
-            throw new CustomUserMessageAuthenticationException('Veuillez vérifier votre adresse mail.');
-        }
 
         return $user;
     }
 
     public function checkCredentials($credentials, UserInterface $user)
     {
-        return $this->passwordEncoder->isPasswordValid($user, $credentials['password']);
+        if($this->passwordEncoder->isPasswordValid($user, $credentials['password'])){
+            if($user->isVerified()){
+                return true;
+            } else {
+                throw new CustomUserMessageAuthenticationException('Votre adresse mail n\'a pas été vérifiée.');
+            }
+        }
     }
 
     /**
