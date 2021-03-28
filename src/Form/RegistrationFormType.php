@@ -3,7 +3,6 @@
 namespace App\Form;
 
 use App\Entity\User;
-use Gregwar\CaptchaBundle\Type\CaptchaType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
@@ -41,7 +40,6 @@ class RegistrationFormType extends AbstractType
                 'invalid_message' => 'Les deux adresses mail doivent correspondre.',
                 'required' => true
             ])
-            ->add('captcha', CaptchaType::class);
         ;
     }
 
