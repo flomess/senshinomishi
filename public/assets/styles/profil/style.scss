@@ -1,0 +1,372 @@
+@import 'colors';
+
+@mixin classicDiv($height, $width) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: $width;
+    height: $height;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;
+}
+
+@font-face {
+    font-family: 'japan_font';
+    src: url('/senshinomishi/public/assets/font/Oswald.ttf');
+    font-weight: normal;
+}
+
+html, body {
+    @include classicDiv(100%,100%);
+    margin: 0;
+    font-family: Roboto;
+}
+
+h1, h2, h3, a, label {
+    font-family: japan_font;
+    text-decoration: none;
+    color: white;
+    font-weight: 400;
+}
+
+p {
+    color: $blue;
+}
+
+body {
+    #main_content {
+        @include classicDiv(100%,100%);
+        position: relative;   
+
+        header {
+            @include classicDiv(auto,90%);
+            background-color: $blue;
+            justify-content: space-between;
+            padding: 0 5% 0 5%;
+            position: absolute;
+            top: 0;
+
+            a {
+                font-size: 2em;
+                text-decoration: underline
+            }
+
+            nav {
+                @include classicDiv(100%,20%);
+                justify-content: flex-start;
+                padding: 1% 0 1% 0;
+
+                a {
+                    font-size: 2em;
+                    text-decoration: none;
+                    margin-right: 10%;
+                }
+            }
+        }//header
+
+        #modification {
+            @include classicDiv(100%,100%);
+            align-items: center;
+            background-color: $grey;
+
+            #profil {
+                @include classicDiv(600px,60%);
+                background-color: rgba(lighten($blue,10%), 0.8);
+                position: relative;
+                justify-content: space-around;
+                border-radius: 30px;
+
+                #img_profil {
+                    @include classicDiv(100px,100%);
+                    position: relative;
+
+                    #img {
+                        @include classicDiv(150px,150px);
+                        position: absolute;
+                        top: -75px;
+                        border-radius: 100px;
+                        background-image: url(/senshinomishi/public/assets/imgs/empty.png)
+                    }
+
+                    span {
+                        @include classicDiv(50px,50px);
+                        position: relative;
+                        bottom: 0px;
+                        right: -50px;
+                        border-radius: 100px;
+                        background-image: url(/senshinomishi/public/assets/imgs/edit.png);
+                        background-color: lighten($grey,10%);
+                        background-size: 60%;
+                    }
+
+                    h1 {
+                        width: 100%;
+                        text-align: center;
+                        font-size: 2em;
+                        position: absolute;
+                        bottom: -50px;
+                    }
+                }
+
+                #info {
+                    @include classicDiv(50%,40%);
+                    position: relative;
+                    padding: 2%;
+                    background-color: rgba($grey,0.8);
+                    border-radius: 20px;
+
+                    h2 {
+                        position: absolute;
+                        top: -45px;
+                        color: white;
+                        padding: 1% 2% 1% 2%;
+                        background-color: rgba(lighten($blue,10%), 0.3);
+                        border-radius: 10px;
+                    }
+
+                    p {
+                        width: 100%;
+                        text-align: justify;
+                        padding: 0 5% 0 5%;
+                    }
+
+                    a {
+                        position: absolute;
+                        bottom: -15px;
+                        color: white;
+                        padding: 1% 4% 1% 4%;
+                        background-color: $blue;
+                        border-radius: 10px;
+                    }
+                }
+
+                #modify {
+                    @include classicDiv(50%,40%);
+
+                    form {
+                        @include classicDiv(100%,100%);
+                        flex-direction: column;
+                        align-items: flex-start;
+
+                        label {
+                            color: white;
+                            font-size: 1.5em;
+                            margin-bottom: 2%;
+                        }
+
+                        input {
+                            @include classicDiv(20%,95%);
+                            border: 0px;
+                            border-radius: 10px;
+                            background-color: rgba($grey,0.8);
+                            color: $blue;
+                            font-size: 2em;
+                            padding-left: 5%;
+                            margin-bottom: 5%;
+                        }
+                    }
+                }
+            }
+        }
+
+        #game {
+            @include classicDiv(auto, 100%);
+            background-color: $blue;
+            padding-top: 100px;
+            justify-content: space-around;
+            align-items: flex-start;
+            padding-bottom: 100px;
+
+            #left {
+                @include classicDiv(auto, 45%);
+                justify-content: space-between;
+                align-items: flex-start;
+
+                #stats {
+                    @include classicDiv(auto, 100%);
+                    background-color: lighten($blue,20%);
+                    border-radius: 20px;
+                    margin-bottom: 100px;
+    
+                    h2 {
+                        background-color: lighten($blue,10%);
+                        width: 95%;
+                        margin: 0;
+                        border-radius: 20px 20px 0 0;
+                        font-size: 2em;
+                        padding-left: 5%;
+    
+                    }
+    
+                    p {
+                        width: 40%;
+                        color: white;
+                    }
+    
+                    hr {
+                        width: 90%;
+                    }
+                }
+    
+                #party {
+                    @include classicDiv(auto, 80%);
+    
+                    h2 {
+                        background-color: lighten($blue,20%);
+                        width: 95%;
+                        margin: 0;
+                        border-radius: 20px 20px 0 0;
+                        font-size: 2em;
+                        padding-left: 5%;
+                        margin-bottom: 40px;
+                    }
+    
+                    h3 {
+                        background-color: lighten($blue,20%);
+                        width: 95%;
+                        margin: 0;
+                        border: 1px solid $blue;
+                        border-radius: 20px;
+                        font-size: 1.5em;
+                        padding-left: 5%;
+                    }
+    
+                    .arrow {
+                        transform: rotate(90deg);
+                        height: 80px;
+                        margin: 20px;
+                    }
+    
+                    #start {
+                        @include classicDiv(auto, 100%);
+                        background-color: lighten($blue,20%);
+                        padding: 5%;
+                        border-radius: 20px;
+    
+                        img {
+                            width: 15%;
+                        }
+                        p {
+                            width: 75%;
+                            color: white;
+                        }
+                    }
+                }
+    
+            }
+            #players {
+                @include classicDiv(auto, 35%);
+
+                #friends {
+                    @include classicDiv(auto, 100%);
+                    background-color: lighten($blue,20%);
+                    border-radius: 20px 20px 0 0;
+                    align-items: center;
+                    justify-content: space-between;
+
+                    h2 {
+                        background-color: lighten($blue,10%);
+                        width: 95%;
+                        margin: 0;
+                        border-radius: 20px 20px 0 0;
+                        font-size: 2em;
+                        padding-left: 5%;
+    
+                    }
+    
+                    p {
+                        width: 40%;
+                        color: white;
+                        font-size: 1.5em;
+                        text-align: start;
+                        padding-left: 5%;
+                    }
+
+                    span {
+                        position: relative;
+                        padding-right: 5%;
+                        .circle_connection {
+                            border-radius: 10px;
+                            height: 20px;
+                            width: 20px;
+                            background-color: green;
+                            content: '';
+                            position: absolute;
+                            left: -50px;
+                        }
+
+                        color: white;
+                    }
+    
+                    hr {
+                        width: 90%;
+                    }
+                }
+
+                #users {
+                    @extend #friends;
+                    border-radius: 0;
+
+                    h2 {
+                        border-radius:0;
+                    }
+
+                    p {
+                        width: 75%;
+                    }
+                }
+
+                #tables {
+                    @extend #friends;
+                    border-radius: 0;
+
+                    h2 {
+                        border-radius:0;
+                    }
+
+                    p {
+                        width: auto;
+                    }
+
+                    a {
+                        font-size: 1.5em;
+                        padding-right: 5%;
+                    }
+                }
+
+                #my_party {
+                    @extend #friends;
+                    border-radius: 0 0 20px 20px;
+
+                    h2 {
+                        border-radius:0;
+                    }
+
+                    a {
+                        font-size: 1.5em;
+                        padding-left: 5%;
+                        margin-top: 20px;
+                        margin-bottom: 20px;
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+    }
+
+    footer {
+        @include classicDiv(auto,100%);
+        background-color: darken($blue,10%);
+
+        nav {
+            @include classicDiv(auto,30%);
+            justify-content: space-around;
+
+            a,p {
+                font-size: 1em;
+            }
+        }
+    }
+}

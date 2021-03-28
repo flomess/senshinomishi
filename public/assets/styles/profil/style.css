@@ -1,0 +1,500 @@
+@font-face {
+  font-family: "japan_font";
+  src: url("/senshinomishi/public/assets/font/Oswald.ttf");
+  font-weight: normal;
+}
+html, body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+  margin: 0;
+  font-family: Roboto;
+}
+
+h1, h2, h3, a, #valider, label {
+  font-family: japan_font;
+  text-decoration: none;
+  color: white;
+  font-weight: 400;
+}
+
+p {
+  color: #3C5D7D;
+}
+
+body #main_content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+  position: relative;
+}
+body #main_content header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 90%;
+  height: auto;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+  background-color: #3C5D7D;
+  justify-content: space-between;
+  padding: 0 5% 0 5%;
+  position: absolute;
+  top: 0;
+}
+body #main_content header a {
+  font-size: 2em;
+  text-decoration: underline;
+}
+body #main_content header nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 20%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+  justify-content: flex-start;
+  padding: 1% 0 1% 0;
+}
+body #main_content header nav a {
+  font-size: 2em;
+  text-decoration: none;
+  margin-right: 10%;
+}
+body #main_content #modification {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+  align-items: center;
+  background-color: #92A4B4;
+}
+body #main_content #modification #profil {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 60%;
+  height: 600px;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+  background-color: rgba(77, 119, 159, 0.8);
+  position: relative;
+  justify-content: space-around;
+  border-radius: 30px;
+}
+body #main_content #modification #profil #img_profil {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100px;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+  position: relative;
+}
+body #main_content #modification #profil #img_profil #img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 150px;
+  height: 150px;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+  position: absolute;
+  top: -75px;
+  border-radius: 100px;
+  background-image: url(/senshinomishi/public/assets/imgs/empty.png);
+}
+body #main_content #modification #profil #img_profil span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 50px;
+  height: 50px;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+  position: relative;
+  bottom: 0px;
+  right: -50px;
+  border-radius: 100px;
+  background-image: url(/senshinomishi/public/assets/imgs/edit.png);
+  background-color: #b0bdc9;
+  background-size: 60%;
+}
+body #main_content #modification #profil #img_profil h1 {
+  width: 100%;
+  text-align: center;
+  font-size: 2em;
+  position: absolute;
+  bottom: -50px;
+}
+body #main_content #modification #profil #info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 40%;
+  height: 50%;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+  position: relative;
+  padding: 2%;
+  background-color: rgba(146, 164, 180, 0.8);
+  border-radius: 20px;
+}
+body #main_content #modification #profil #info h2 {
+  position: absolute;
+  top: -45px;
+  color: white;
+  padding: 1% 2% 1% 2%;
+  background-color: rgba(77, 119, 159, 0.3);
+  border-radius: 10px;
+}
+body #main_content #modification #profil #info p {
+  width: 100%;
+  text-align: justify;
+  padding: 0 5% 0 5%;
+}
+body #main_content #modification #profil #info a, #valider {
+  position: absolute;
+  bottom: -15px;
+  color: white;
+  padding: 1% 4% 1% 4%;
+  background-color: #3C5D7D;
+  border-radius: 10px;
+}
+body #main_content #modification #profil #modify {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 40%;
+  height: 50%;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+}
+body #main_content #modification #profil #modify form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+  flex-direction: column;
+  align-items: flex-start;
+}
+body #main_content #modification #profil #modify form label {
+  color: white;
+  font-size: 1.5em;
+  margin-bottom: 2%;
+}
+body #main_content #modification #profil #modify form input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 95%;
+  height: 20%;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+  border: 0px;
+  border-radius: 10px;
+  background-color: rgba(146, 164, 180, 0.8);
+  color: #3C5D7D;
+  font-size: 2em;
+  padding-left: 5%;
+  margin-bottom: 5%;
+}
+
+body #main_content #modification #profil #info #modify {
+ width: 95%;
+}
+
+body #main_content #modification #profil #modify #modify_pres {
+  height: 100%;
+  width: 100%;
+  font-size: 1em;
+}
+
+body #main_content #modification #profil #valider {
+  font-size: 1em;
+  border: none;
+}
+
+body #main_content #modification #profil .valider_r {
+  font-size: 1em;
+  border: none;
+  position: relative;
+}
+
+body #main_content #game {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  height: auto;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+  background-color: #3C5D7D;
+  padding-top: 100px;
+  justify-content: space-around;
+  align-items: flex-start;
+  padding-bottom: 100px;
+}
+body #main_content #game #left {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 45%;
+  height: auto;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+body #main_content #game #left #stats {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  height: auto;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+  background-color: #6890b7;
+  border-radius: 20px;
+  margin-bottom: 100px;
+}
+body #main_content #game #left #stats h2 {
+  background-color: #4d779f;
+  width: 95%;
+  margin: 0;
+  border-radius: 20px 20px 0 0;
+  font-size: 2em;
+  padding-left: 5%;
+}
+body #main_content #game #left #stats p {
+  width: 40%;
+  color: white;
+}
+body #main_content #game #left #stats hr {
+  width: 90%;
+}
+body #main_content #game #left #party {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 80%;
+  height: auto;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+}
+body #main_content #game #left #party h2 {
+  background-color: #6890b7;
+  width: 95%;
+  margin: 0;
+  border-radius: 20px 20px 0 0;
+  font-size: 2em;
+  padding-left: 5%;
+  margin-bottom: 40px;
+}
+body #main_content #game #left #party h3 {
+  background-color: #6890b7;
+  width: 95%;
+  margin: 0;
+  border: 1px solid #3C5D7D;
+  border-radius: 20px;
+  font-size: 1.5em;
+  padding-left: 5%;
+}
+body #main_content #game #left #party .arrow {
+  transform: rotate(90deg);
+  height: 80px;
+  margin: 20px;
+}
+body #main_content #game #left #party #start {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  height: auto;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+  background-color: #6890b7;
+  padding: 5%;
+  border-radius: 20px;
+}
+body #main_content #game #left #party #start img {
+  width: 15%;
+}
+body #main_content #game #left #party #start p {
+  width: 75%;
+  color: white;
+}
+body #main_content #game #players {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 35%;
+  height: auto;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+}
+body #main_content #game #players #friends, body #main_content #game #players #my_party, body #main_content #game #players #tables, body #main_content #game #players #users {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  height: auto;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+  background-color: #6890b7;
+  border-radius: 20px 20px 0 0;
+  align-items: center;
+  justify-content: space-between;
+}
+body #main_content #game #players #friends h2, body #main_content #game #players #my_party h2, body #main_content #game #players #tables h2, body #main_content #game #players #users h2 {
+  background-color: #4d779f;
+  width: 95%;
+  margin: 0;
+  border-radius: 20px 20px 0 0;
+  font-size: 2em;
+  padding-left: 5%;
+}
+body #main_content #game #players #friends p, body #main_content #game #players #my_party p, body #main_content #game #players #tables p, body #main_content #game #players #users p {
+  width: 40%;
+  color: white;
+  font-size: 1.5em;
+  text-align: start;
+  padding-left: 5%;
+}
+body #main_content #game #players #friends span, body #main_content #game #players #my_party span, body #main_content #game #players #tables span, body #main_content #game #players #users span {
+  position: relative;
+  padding-right: 5%;
+  color: white;
+}
+body #main_content #game #players #friends span .circle_connection, body #main_content #game #players #my_party span .circle_connection, body #main_content #game #players #tables span .circle_connection, body #main_content #game #players #users span .circle_connection {
+  border-radius: 10px;
+  height: 20px;
+  width: 20px;
+  background-color: green;
+  content: "";
+  position: absolute;
+  left: -50px;
+}
+body #main_content #game #players #friends hr, body #main_content #game #players #my_party hr, body #main_content #game #players #tables hr, body #main_content #game #players #users hr {
+  width: 90%;
+}
+body #main_content #game #players #users {
+  border-radius: 0;
+}
+body #main_content #game #players #users h2 {
+  border-radius: 0;
+}
+body #main_content #game #players #users p {
+  width: 75%;
+}
+body #main_content #game #players #tables {
+  border-radius: 0;
+}
+body #main_content #game #players #tables h2 {
+  border-radius: 0;
+}
+body #main_content #game #players #tables p {
+  width: auto;
+}
+body #main_content #game #players #tables a {
+  font-size: 1.5em;
+  padding-right: 5%;
+}
+body #main_content #game #players #my_party {
+  border-radius: 0 0 20px 20px;
+}
+body #main_content #game #players #my_party h2 {
+  border-radius: 0;
+}
+body #main_content #game #players #my_party a {
+  font-size: 1.5em;
+  padding-left: 5%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-decoration: underline;
+}
+body footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  height: auto;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+  background-color: #2b435b;
+}
+body footer nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 30%;
+  height: auto;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+  justify-content: space-around;
+}
+body footer nav a, body footer nav p {
+  font-size: 1em;
+}
+
+/*# sourceMappingURL=style.css.map */

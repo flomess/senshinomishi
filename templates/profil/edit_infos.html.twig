@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Senshi no Mishi | Profil de {{ user.pseudo }}{% endblock %}
+{% block stylesheets %}
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/styles/profil/style.css') }}">
+{% endblock %}
+{% block body %}
+    <div id="main_content">
+        <header>
+            <nav>
+                <a href="{{ path('accueil') }}">Accueil</a>
+                <a href="">Contact</a>
+            </nav>
+            <a href="{{ path('app_logout') }}">Déconnexion</a>
+        </header>
+
+    <section id="modification">
+
+        <div id="profil" style="height: auto; width: auto;">
+            <h1>Veuillez confirmer les informations enregistrées :</h1>
+        <div id="modify" style="height: auto; width: 95%;">
+            <form method="post" action="{{ path('profil_EditInfosValid') }}">
+                {% if error %}
+                    <div class="alert alert-danger">{{ error }}</div>
+                {% endif %}
+                <label >Mail :</label>
+                <input type="email" name="mail" value="{{ mail }}">
+                <label >Nouveau mot de passe :</label>
+                <input type="password" name="password" value="{{ password }}">
+                <label >Confirmez le nouveau mot de passe :</label>
+                <input type="password" name="password2">
+                <hr>
+                <label >Mot de Passe actuel :</label>
+                <input type="password" name="password3" required>
+                <button id="valider" type="submit">VALIDER</button>
+            </form>
+        </div>
+        </div>
+    </section>
+    </div>
+{% endblock %}

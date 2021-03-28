@@ -1,19 +1,137 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ProfilController!{% endblock %}
-
+{% block title %}Senshi no Mishi | Profil de {{ user.pseudo }}{% endblock %}
+{% block stylesheets %}
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/styles/profil/style.css') }}">
+{% endblock %}
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <div id="main_content">
+        <header>
+            <nav>
+                <a href="{{ path('accueil') }}">Accueil</a>
+                <a href="">Contact</a>
+            </nav>
+            <a href="{{ path('app_logout') }}">Déconnexion</a>
+        </header>
 
-<div class="example-wrapper">
-    <h1>Hello {{ user.pseudo }}!</h1>
-    <p>Mail : {{ user.mail }}</p>
-    <p>Parties : {{ user.nbParties }}</p>
-    <p>Victoires : {{ user.nbVictoires }}</p>
+        <section id="modification">
+            <div id="profil">
+                <div id="img_profil">
+                    <div id="img"></div>
+                    <span></span>
+                    <h1>{{ user.pseudo }}</h1>
+                </div>
+                <div id="info">
+                    <h2>Mes informations personnelles</h2>
+                    <p>Date d'inscription: {{ dateInscription }}</p>
+                    <p><b>Présentation : </b>
+                    {% if presEdit == 1 %}
+                    <div id="modify">
+                        <form method="post" action="{{ path('profil_presEditValid') }}">
+                            <input id="modify_pres" type="text" height="50px" width="50px" name="presentation" value="{{ user.presentation }}">
+                    </p>
 
+                    </div>
+                    <button id="valider" type="submit">VALIDER</button>
+                </form>
+                    {% elseif user.presentation %}
+                            {{ user.presentation }}
+                        </p>
+                    <a href="{{ path('profil_presEdit') }}">MODIFIER</a>
+                    {% else %}
+                            <i>Vous n'avez pas encore rédigé votre présentation.</i>
+                        </p>
+                        <a href="{{ path('profil_presEdit') }}">MODIFIER</a>
+                    {% endif %}
+                </div>
+                <div id="modify">
+                    <form method="post" action="{{ path('profil_EditInfos') }}">
+                        <label>Votre adresse email :</label>
+                        <input type="email" name="mail" value="{{ user.mail }}">
+                        <label>Votre mot de passe : </label>
+                        <input type="password" name="password" id="inputPassword" class="form-control">
+                        <button id="valider" class="valider_r" type="submit">Modifier mes informations</button>
+                    </form>
+                </div>
+            </div>
+        </section>
 
-</div>
+        <section id="game">
+            <div id="left">
+                <div id="stats">
+                    <h2>Mes statistiques de jeu</h2>
+                    <p>Nombre de parties jouées</p><p>{{ user.nbParties }}</p>
+                    <hr>
+                    <p>Parties gagnées</p><p>{{ user.nbVictoires }}</p>
+                    <hr>
+                    <p>Classement du joueur</p><p>16/340</p>
+                </div>
+
+                <div id="party">
+                    <h2>Gestion des parties</h2>
+                    <h3>Débuter une nouvelle partie</h3>
+                    <img class="arrow" src="{{ asset('assets/imgs/arrow.png') }}">
+                    <div id="start">
+                        <p><img src="">Ouvrir une nouvelle table de jeu</p>
+                        <p><img src="">Choisir une partie dans la liste des tables</p>
+                        <p><img src="">Choisir un adversaire en ligne</p>
+                        <p><img src="">Inviter un adversaire de la liste d'amis</p>
+                        <p><img src="">Répondre à une invitation par mail</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="players">
+                <div id="friends">
+                    <h2>Mes amis</h2>
+                    <p>Doneäl</p><span><span class="circle_connection"></span>En ligne</span>
+                    <hr>
+                    <p>Thirdullon</p><span><span class="circle_connection"></span>En ligne</span>
+                    <hr>
+                    <p>Classement du joueur</p>
+                    <span>16/340</span>
+                </div>
+                <div id="users">
+                    <h2>Utilisateurs en ligne</h2>
+                    <p>User437</p>
+                    <hr>
+                    <p>Rififi</p>
+                    <hr>
+                    <p>JeanClaudeVD</p>
+                    <hr>
+                    <p>Valentin_10</p>
+                </div>
+                <div id="tables">
+                    <h2>Tables ouvertes</h2>
+                    <p>Imnor</p><a href=""><i>En attente</i></a>
+                    <hr>
+                    <p>Mûibeth</p><a href=""><b>Rejoindre</b></a>
+                    <hr>
+                    <p>Fartada</p>
+                    <hr>
+                    <p>Hartaerë</p>
+                </div>
+                <div id="my_party">
+                    <h2>Mes parties</h2>
+                    <a href="">Reprendre une partie en cours</a>
+                    <a href="">Relancer une partie en envoyant un mail</a>
+                    <a href="">Supprimer une partie en cours</a>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <nav>
+                <a href="">Mentions légales</a>
+                <p>-</p>
+                <a href="">CGV</a>
+                <p>-</p>
+                <a href="">RGPD</a>
+                <p>-</p>
+                <a href="">CGU</a>
+            </nav>
+        </footer>
+    </div>
+
 {% endblock %}

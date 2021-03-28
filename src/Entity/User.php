@@ -83,6 +83,11 @@ class User implements UserInterface
      */
     private $isVerified = false;
 
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $presentation;
+
     public function __construct()
     {
         $this->games1 = new ArrayCollection();
@@ -307,6 +312,18 @@ class User implements UserInterface
     public function setIsVerified(bool $isVerified): self
     {
         $this->isVerified = $isVerified;
+
+        return $this;
+    }
+
+    public function getPresentation(): ?string
+    {
+        return $this->presentation;
+    }
+
+    public function setPresentation(?string $presentation): self
+    {
+        $this->presentation = $presentation;
 
         return $this;
     }

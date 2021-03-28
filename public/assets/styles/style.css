@@ -1,0 +1,177 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald&display=swap");
+@font-face {
+  font-family: "Myfont";
+  src: url("/senshinomishi/public/assets/font/Moyko.ttf");
+}
+*, html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-image: url("/senshinomishi/public/assets/imgs/background.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+}
+
+section {
+  width: auto;
+  margin-top: 100px;
+  margin-left: 100px;
+  height: 850px;
+}
+section .first .title {
+  font-family: Myfont, serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 80px;
+  line-height: 76px;
+  text-align: center;
+  color: #ECECEC;
+}
+section .secondary {
+  position: absolute;
+  width: 130px;
+  height: 40px;
+  left: 144px;
+  top: 244px;
+  background: rgba(86, 49, 45, 0.9);
+  border: 1px solid #982424;
+  box-sizing: border-box;
+}
+section .secondary .rules {
+  position: absolute;
+  width: 130px;
+  height: 40px;
+  left: 150px;
+  top: 0;
+  background: rgba(86, 49, 45, 0.9);
+  border: 1px solid #982424;
+  box-sizing: border-box;
+}
+section .secondary h3 {
+  font-family: Oswald, sans-serif;
+  color: white;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 36px;
+  text-align: center;
+}
+section .firstconatiner {
+  position: absolute;
+  width: 727px;
+  height: 354px;
+  left: 124px;
+  top: 279px;
+  background: rgba(86, 49, 45, 0.9);
+  border-radius: 10px;
+}
+section .firstconatiner .secondcontainer {
+  position: absolute;
+  width: 700px;
+  height: 300px;
+  left: 10px;
+  top: 20px;
+  background: rgba(152, 36, 36, 0.72);
+  mix-blend-mode: lighten;
+  border: 5px solid #982424;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+section .firstconatiner .secondcontainer .content {
+  font-family: Oswald;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 30px;
+  text-align: justify;
+  color: #E5E5E5;
+}
+
+aside {
+  position: absolute;
+  width: 455px;
+  height: 1075px;
+  left: 1064px;
+  top: -26px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+}
+aside .logo {
+  position: absolute;
+  width: 282px;
+  text-align: center;
+  margin-left: 80px;
+  top: 17px;
+  opacity: 1;
+}
+aside section h3 {
+  position: absolute;
+  width: 134px;
+  height: 53px;
+  top: 272px;
+  margin-left: 60px;
+  color: white;
+  font-family: Oswald;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 53px;
+  text-align: center;
+}
+aside section .formulaire {
+  margin-left: 0px;
+  position: absolute;
+  top: 400px;
+  color: white;
+  font-family: Oswald;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 53px;
+  text-align: center;
+}
+aside section input {
+  background-color: rgba(0, 0, 0, 0.1);
+  height: 25px;
+  color: white;
+}
+aside section button {
+  width: 285px;
+  height: 82px;
+  background: #982424;
+  border-radius: 19px;
+  font-family: Myfont, Serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 34px;
+  text-align: center;
+  color: #FFFFFF;
+}
+aside .footer {
+  position: absolute;
+  margin-left: 100px;
+  width: auto;
+  height: 83px;
+  color: white;
+  bottom: 0;
+}
+
+.language {
+  position: absolute;
+  display: inline-block;
+  align-items: baseline;
+  margin-left: 30px;
+}
+.language h3 {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 30px;
+  padding-bottom: 10px;
+  color: white;
+}
+
+/*# sourceMappingURL=style.css.map */

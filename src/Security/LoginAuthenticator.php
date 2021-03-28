@@ -24,7 +24,7 @@ class LoginAuthenticator extends AbstractFormLoginAuthenticator implements Passw
 {
     use TargetPathTrait;
 
-    public const LOGIN_ROUTE = 'app_login';
+    public const LOGIN_ROUTE = 'accueil';
 
     private $entityManager;
     private $urlGenerator;
@@ -81,6 +81,7 @@ class LoginAuthenticator extends AbstractFormLoginAuthenticator implements Passw
     {
         if($this->passwordEncoder->isPasswordValid($user, $credentials['password'])){
             if($user->isVerified()){
+
                 return true;
             } else {
                 throw new CustomUserMessageAuthenticationException('Votre adresse mail n\'a pas été vérifiée.');
