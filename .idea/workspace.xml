@@ -20,47 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="27c6abd4-2676-4f23-8b17-7dc3e4dc4454" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/assets/font/Katana.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/font/Moyko.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/font/Oswald-Bold.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/font/Oswald-ExtraLight.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/font/Oswald-Light.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/font/Oswald-Medium.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/font/Oswald-Regular.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/font/Oswald-SemiBold.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/font/Oswald.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/imgs/arrow.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/imgs/background.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/imgs/edit.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/imgs/empty.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/imgs/globe2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/imgs/logofinal.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/styles/profil/_colors.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/styles/profil/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/styles/profil/style.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/styles/profil/style.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/styles/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/styles/style.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/styles/style.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/profil/edit_infos.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/senshinomishi.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/senshinomishi.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/routes.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/DefaultController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/ProfilController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ProfilController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/SecurityController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/SecurityController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Form/RegistrationFormType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/RegistrationFormType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Security/LoginAuthenticator.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Security/LoginAuthenticator.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/default/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/profil/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/profil/index.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/registration/register.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/registration/register.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -218,7 +179,7 @@
       <workItem from="1616681545061" duration="5508000" />
       <workItem from="1616697833966" duration="2562000" />
       <workItem from="1616704287768" duration="6401000" />
-      <workItem from="1616935915285" duration="16847000" />
+      <workItem from="1616935915285" duration="19863000" />
     </task>
     <servers />
   </component>
