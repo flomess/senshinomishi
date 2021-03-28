@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Oswald&display=swap");
 @font-face {
   font-family: "Myfont";
-  src: url("/senshinomishi/public/assets/font/Moyko.ttf");
+  src: url("../font/Moyko.ttf");
 }
 *, html, body {
   margin: 0;
@@ -9,7 +9,7 @@
 }
 
 body {
-  background-image: url("/senshinomishi/public/assets/imgs/background.png");
+  background-image: url("../imgs/background.png");
   background-repeat: no-repeat;
   background-size: cover;
   position: absolute;

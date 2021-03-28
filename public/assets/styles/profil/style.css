@@ -1,6 +1,6 @@
 @font-face {
   font-family: "japan_font";
-  src: url("/senshinomishi/public/assets/font/Oswald.ttf");
+  src: url("../../font/Oswald.ttf");
   font-weight: normal;
 }
 html, body {

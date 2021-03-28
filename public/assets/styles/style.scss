@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'Myfont';
-  src: url("../../../../../../Users/flowz/Documents/MMI/Meiyo/page_accueil/page_accueil/font/Moyko.ttf");
+  src: url("../font/Moyko.ttf");
 }
 @import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
 
@@ -9,7 +9,7 @@
   padding: 0;
 }
 body{
-  background-image: url("../../../../../../Users/flowz/Documents/MMI/Meiyo/page_accueil/page_accueil/imgs/by-tacosauceninja-tacosauceninja-digital-art-landscapes-a-47 1.png");
+  background-image: url("../imgs/background.png");
   background-repeat:no-repeat ;
   background-size: cover;
   position: absolute;
