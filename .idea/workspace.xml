@@ -20,7 +20,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="27c6abd4-2676-4f23-8b17-7dc3e4dc4454" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/public/assets/styles/profil/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/styles/profil/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/styles/profil/_colors.scss" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/styles/a/_colors.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/styles/profil/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/styles/a/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/styles/profil/style.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/styles/a/style.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/styles/profil/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/styles/a/style.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/styles/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/styles/r/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/styles/style.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/styles/r/style.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/styles/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/styles/r/style.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Security/LoginAuthenticator.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Security/LoginAuthenticator.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/default/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/profil/edit_infos.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/profil/edit_infos.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/profil/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/profil/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/registration/register.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/registration/register.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,18 +153,18 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\wamp64\www\senshinomishi\public\assets\styles\profil" />
-      <recent name="C:\wamp64\www\senshinomishi\public\assets\imgs" />
-      <recent name="C:\wamp64\www\senshinomishi\public\assets\font" />
-      <recent name="C:\wamp64\www\senshinomishi\public\assets\styles" />
-      <recent name="C:\wamp64\www\senshinomishi\public\assets" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\wamp64\www\senshinomishi\src\Form" />
       <recent name="C:\wamp64\www\senshinomishi\templates\profil" />
       <recent name="C:\wamp64\www\testpromo" />
       <recent name="C:\Users\flowz\Documents\MMI\Meiyo\site\promo" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\wamp64\www\senshinomishi\public\assets\styles\r" />
+      <recent name="C:\wamp64\www\senshinomishi\public\assets\styles\profil" />
+      <recent name="C:\wamp64\www\senshinomishi\public\assets\imgs" />
+      <recent name="C:\wamp64\www\senshinomishi\public\assets\font" />
+      <recent name="C:\wamp64\www\senshinomishi\public\assets\styles" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -174,7 +187,9 @@
       <workItem from="1616681545061" duration="5508000" />
       <workItem from="1616697833966" duration="2562000" />
       <workItem from="1616704287768" duration="6401000" />
-      <workItem from="1616935915285" duration="21339000" />
+      <workItem from="1616935915285" duration="21426000" />
+      <workItem from="1616997983131" duration="2836000" />
+      <workItem from="1617105324194" duration="3068000" />
     </task>
     <servers />
   </component>
@@ -222,5 +237,9 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1616580918419" />
+    <state x="561" y="271" key="scopes" timestamp="1617105915135">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="561" y="271" key="scopes/0.0.1536.824@0.0.1536.824" timestamp="1617105915135" />
   </component>
 </project>

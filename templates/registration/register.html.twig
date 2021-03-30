@@ -1,7 +1,9 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Register{% endblock %}
-
+{% block javascripts %}
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+{% endblock %}
 {% block body %}
     {% for flashError in app.flashes('verify_email_error') %}
         <div class="alert alert-danger" role="alert">{{ flashError }}</div>
@@ -16,7 +18,8 @@
             label: 'Password'
         }) }}
         {{ form_row(registrationForm.agreeTerms) }}
+    <div class="g-recaptcha" data-sitekey="6LfwY5MaAAAAACyF2zZ_SpSZ1LqMT_KrwD466DIX"></div>
 
-        <button type="submit" class="btn">Register</button>
+        <button class="btn">Register</button>
     {{ form_end(registrationForm) }}
 {% endblock %}
