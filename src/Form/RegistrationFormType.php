@@ -38,7 +38,8 @@ class RegistrationFormType extends AbstractType
             ])
             ->add('mail', EmailType::class, [
                 'invalid_message' => 'Les deux adresses mail doivent correspondre.',
-                'required' => true
+                'required' => true,
+                'label' => 'Adresse Mail'
             ])
         ;
     }

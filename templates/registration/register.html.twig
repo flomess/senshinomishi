@@ -1,25 +1,49 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}Senshi no Mishi | Inscription{% endblock %}
+{% block stylesheets %}
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/styles/a/style_register.css') }}">
+{% endblock %}
 {% block javascripts %}
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 {% endblock %}
 {% block body %}
+<div id="main_content">
+    <header>
+        <nav>
+            <a href="{{ path('accueil') }}">Accueil</a>
+            <a href="">Contact</a>
+        </nav>
+    </header>
     {% for flashError in app.flashes('verify_email_error') %}
         <div class="alert alert-danger" role="alert">{{ flashError }}</div>
     {% endfor %}
 
-    <h1>Register</h1>
+    <section id="form">
+        {{ form_start(registrationForm) }}
+            <h1>Veuillez entrer les informations demandées :</h1>
+            {{ form_label(registrationForm.pseudo) }}
+            {{ form_widget(registrationForm.pseudo) }}
+            {{ form_label(registrationForm.mail) }}
+            {{ form_widget(registrationForm.mail) }}
+            {{ form_widget(registrationForm.password) }}
+            <div class="accept"><label>Accepter les termes d'utilisations :</label>{{ form_widget(registrationForm.agreeTerms) }}</div>
+            <div class="g-recaptcha" data-sitekey="6LfwY5MaAAAAACyF2zZ_SpSZ1LqMT_KrwD466DIX"></div>
+            <input class="button" type="submit" value="Valider">
+            {{ form_end(registrationForm) }}
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.pseudo) }}
-    {{ form_row(registrationForm.mail) }}
-        {{ form_row(registrationForm.password, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
-    <div class="g-recaptcha" data-sitekey="6LfwY5MaAAAAACyF2zZ_SpSZ1LqMT_KrwD466DIX"></div>
-
-        <button class="btn">Register</button>
-    {{ form_end(registrationForm) }}
+    </section>
+    <footer>
+        <nav>
+            <a href="">Mentions légales</a>
+            <p>-</p>
+            <a href="">CGV</a>
+            <p>-</p>
+            <a href="">RGPD</a>
+            <p>-</p>
+            <a href="">CGU</a>
+        </nav>
+    </footer>
+</div>
 {% endblock %}

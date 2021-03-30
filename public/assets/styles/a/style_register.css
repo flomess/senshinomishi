@@ -1,0 +1,210 @@
+@font-face {
+  font-family: "japan_font";
+  src: url("../../font/Oswald.ttf");
+  font-weight: normal;
+}
+html, body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+  margin: 0;
+  font-family: Roboto;
+}
+
+h1, h2, h3, a, label {
+  font-family: japan_font;
+  text-decoration: none;
+  color: white;
+  font-weight: 400;
+  font-size: 1.5em;
+}
+
+p {
+  color: black;
+}
+
+body #main_content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+  position: relative;
+  background-color: #e97777;
+}
+body #main_content header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 90%;
+  height: auto;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+  background-color: #982424;
+  justify-content: space-between;
+  padding: 0 5% 0 5%;
+  position: absolute;
+  top: 0;
+}
+body #main_content header a {
+  font-size: 2em;
+  text-decoration: underline;
+}
+body #main_content header nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 20%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+  justify-content: flex-start;
+  padding: 1% 0 1% 0;
+}
+body #main_content header nav a {
+  font-size: 2em;
+  text-decoration: none;
+  margin-right: 10%;
+}
+body #main_content #form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+  flex-direction: column;
+}
+body #main_content #form form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 50%;
+  height: auto;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+  position: relative;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: rgba(193, 46, 46, 0.8);
+  padding: 20px;
+  border-radius: 20px;
+}
+body #main_content #form form h1 {
+  text-align: center;
+  width: 100%;
+}
+body #main_content #form form label, body #main_content #form form input {
+  width: 100%;
+  margin: 0;
+}
+
+body #main_content #form form #registration_form_agreeTerms {
+  max-width: 5%;
+}
+
+body #main_content #form form #registration_form_mail, body #main_content #form form #registration_form_pseudo, body #main_content #form form .password-field {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 95%;
+  height: 5%;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+  border: 0px;
+  border-radius: 10px;
+  background-color: #e97777;
+  color: #3C5D7D;
+  font-size: 2em;
+  padding-left: 5%;
+  margin-bottom: 5%;
+}
+body #main_content #form form .accept {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 50%;
+  height: auto;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  align-items: center;
+  justify-content: start;
+}
+body #main_content #form form .accept label {
+  font-size: 1em;
+  width: 50%;
+}
+body #main_content #form form .button {
+  position: absolute;
+  bottom: -15px;
+  color: white;
+  padding: 1% 4% 1% 4%;
+  background-color: #982424;
+  border-radius: 10px;
+  border: none;
+  width: 20%;
+}
+body #main_content #form form .g-recaptcha {
+  width: 250px;
+  height: 80px;
+  background-color: #92A4B4;
+}
+body #main_content footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  height: auto;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+  background-color: #6f1a1a;
+}
+body #main_content footer nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 30%;
+  height: auto;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+  justify-content: space-around;
+}
+body #main_content footer nav a, body #main_content footer nav p {
+  font-size: 1em;
+}
+
+#registration_form_password {
+  width: 100%;
+  margin: 0;
+}
+
+/*# sourceMappingURL=style_register.css.map */

@@ -1,0 +1,156 @@
+@import 'colors';
+
+@mixin classicDiv($height, $width) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: $width;
+    height: $height;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;
+}
+
+@font-face {
+    font-family: 'japan_font';
+    src: url('../../font/Oswald.ttf');
+    font-weight: normal;
+}
+
+html, body {
+    @include classicDiv(100%,100%);
+    margin: 0;
+    font-family: Roboto;
+}
+
+h1, h2, h3, a, label {
+    font-family: japan_font;
+    text-decoration: none;
+    color: white;
+    font-weight: 400;
+    font-size: 1.5em;
+}
+
+p {
+    color: black;
+}
+
+body {
+    #main_content {
+        @include classicDiv(100%,100%);
+        position: relative;  
+        background-color: $l-red; 
+
+        header {
+            @include classicDiv(auto,90%);
+            background-color: $red;
+            justify-content: space-between;
+            padding: 0 5% 0 5%;
+            position: absolute;
+            top: 0;
+
+            a {
+                font-size: 2em;
+                text-decoration: underline
+            }
+
+            nav {
+                @include classicDiv(100%,20%);
+                justify-content: flex-start;
+                padding: 1% 0 1% 0;
+
+                a {
+                    font-size: 2em;
+                    text-decoration: none;
+                    margin-right: 10%;
+                }
+            }
+        }//header
+
+        #form {
+            @include classicDiv(100%,100%);
+            flex-direction: column;
+
+            form {
+                @include classicDiv(auto,50%);
+                position: relative;
+                align-items: center;
+                justify-content: flex-start;
+                background-color: rgba(lighten($red,10%), 0.8);
+                padding: 20px;
+                border-radius: 20px;
+
+                h1 {
+                    text-align: center;
+                    width: 100%;
+                }
+
+                label, input {
+                    width: 100%;
+                    margin: 0;
+                }
+
+                .inputs {
+                    @include classicDiv(5%,95%);
+                    border: 0px;
+                    border-radius: 10px;
+                    background-color: $l-red;
+                    color: #3C5D7D;
+                    font-size: 2em;
+                    padding-left: 5%;
+                    margin-bottom: 5%;
+                }
+
+                .accept {
+                    @include classicDiv(auto,50%);
+                    margin-top: 10px; 
+                    margin-bottom: 10px;
+                    align-items: center;
+                    justify-content: start;
+
+                    label {
+                        font-size: 1em; 
+                        width: 50%;
+                    }
+                }
+
+                .button {
+                    position: absolute;
+                    bottom: -15px;
+                    color: white;
+                    padding: 1% 4% 1% 4%;
+                    background-color: $red;
+                    border-radius: 10px;
+                    border: none;
+                    width: 20%;
+                }
+
+                .g-recaptcha {
+                    width: 250px;
+                    height: 80px;
+                    background-color: $grey;
+                }
+
+                #registration_form_password {
+                    width: 100%;
+                }
+
+            }
+        }
+
+        footer {
+            @include classicDiv(auto,100%);
+            background-color: darken($red,10%);
+    
+            nav {
+                @include classicDiv(auto,30%);
+                justify-content: space-around;
+    
+                a,p {
+                    font-size: 1em;
+                }
+            }
+        }
+    }
+}
