@@ -2,50 +2,47 @@
 
 {% block title %}Senshi no Mishi | Accueil{% endblock %}
 {% block stylesheets %}
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald&display=swap">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/styles/r/style.css') }}">
 {% endblock %}
 
 {% block body %}
     <section class="main">
 
-        <div class="first">
-            <div class="title">
-                SENSHI NO MISHI
-            </div>
+        <h1>SENSHI NO MISHI</h1>
+
+        <div class="mainseconde">
+            <h3 class="secondary">Le jeu</h3>
+            <h3 class="secondary">Règles</h3>
         </div>
 
-
-        <div class="secondary">
-            <h3>Le jeu</h3>
-            <h3 class="rules">Règles</h3>
-        </div>
-
-        <div class="firstconatiner">
+        <div class="firstcontainer">
             <div class="secondcontainer">
                 <div class="content">
                     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
                 </div>
-
             </div>
         </div>
+    </section>
 
-        <aside>
-            <div class="logo">
-                <img src="{{ asset('assets/imgs/logofinal.png') }}">
-            </div>
+    <section class="last">
+        <div class="form">
 
-            <section>
-                <h3>Connexion</h3>
-                <div class="formulaire">
+            <img class="logo" src="{{ asset('assets/imgs/logofinal.png') }}">
+
+
+                {% if app.user %}
+                    <h4>{{ app.user.username }}</h4>
+                    {% else %}
+                <h4>Connexion</h4>
+                {% endif %}
+
                     <form method="post">
                         {% if error %}
                             <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
                         {% endif %}
 
                         {% if app.user %}
-                            <div class="mb-3">
-                                Vous êtes connecté en tant que {{ app.user.username }}<br> <a style=" font-weight: bolder;color: #982424 ;text-decoration: underline" href="{{ path('app_logout') }}">Déconnexion</a>
-                            </div>
                             {% else %}
                                 <label for="inputPseudo">Pseudo</label><br>
                                 <input type="text" value="{{ last_username }}" name="pseudo" id="inputPseudo" class="form-control" required autofocus><br>
@@ -54,38 +51,43 @@
 
                                 <input type="hidden" name="_csrf_token"
                                        value="{{ csrf_token('authenticate') }}"
-                                >
+                                ><br>
 
                                 <button class="btn btn-lg btn-primary" type="submit">
                                     Se connecter
                                 </button>
-
+                    </form><br>
                         {% endif %}
                         {% if app.user %}
                         {% else %}
-                            <h4>Vous n'avez pas de compte ? </h4>
-                            <h5><a href="{{ path('app_register') }}" style=" font-weight: bolder;color: #982424 ;text-decoration: underline">Rejoignez-nous</a></h5>
+                            <h3>Vous n'avez pas de compte ? </h3>
+                            <h5><a href="{{ path('app_register') }}" style=" font-weight: bolder;color: #982424 ;text-decoration: underline;text-align: center ">Rejoignez-nous</a></h5>
 
                         {% endif %}
 
 
-                    </form><br>
 
-                    <button>
-                        Jouer
-                    </button>
+                    {% if app.user %}
+                        <button><a href="{{ path('profil') }}">
+                            Profil
+                            </a></button><br>
+                    <button><a href="">
+                            Jouer
+                        </a></button><br>
+                        <button><a href="{{ path('app_logout') }}">
+                                Déconnexion
+                            </a>
+                        </button>
+                    {% endif %}
 
-                </div>
 
-            </section>
             <div class="footer">
-                Gestion  -  Mentions légales  -  Contact  -  CGC
+                <a href="{{ path('admin') }}">Gestion</a>  -  Mentions légales  -  Contact  -  CGC
             </div>
-        </aside>
+        </div>
 
     </section>
-    <div class="language">
-        <img src="{{ asset('assets/imgs/globe2.png') }}" height="40px">
-        <h3>Francais</h3>
-    </div>
+
+
+
 {% endblock %}

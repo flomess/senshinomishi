@@ -3,7 +3,7 @@
   font-family: "Myfont";
   src: url("../../font/Moyko.ttf");
 }
-*, html, body {
+*, html {
   margin: 0;
   padding: 0;
 }
@@ -11,167 +11,161 @@
 body {
   background-image: url("../../imgs/background.png");
   background-repeat: no-repeat;
-  background-size: cover;
-  position: absolute;
+  background-size: 100% 100%;
+  background-attachment: fixed;
 }
 
 section {
-  width: auto;
-  margin-top: 100px;
-  margin-left: 100px;
-  height: 850px;
+  display: inline-block;
+  height: 100%;
 }
-section .first .title {
+section h1 {
+  width: auto;
+  height: auto;
+  display: block;
+  margin-top: 8%;
+  margin-left: 10%;
   font-family: Myfont, serif;
   font-style: normal;
   font-weight: normal;
   font-size: 80px;
   line-height: 76px;
-  text-align: center;
-  color: #ECECEC;
-}
-section .secondary {
-  position: absolute;
-  width: 130px;
-  height: 40px;
-  left: 144px;
-  top: 244px;
-  background: rgba(86, 49, 45, 0.9);
-  border: 1px solid #982424;
-  box-sizing: border-box;
-}
-section .secondary .rules {
-  position: absolute;
-  width: 130px;
-  height: 40px;
-  left: 150px;
-  top: 0;
-  background: rgba(86, 49, 45, 0.9);
-  border: 1px solid #982424;
-  box-sizing: border-box;
-}
-section .secondary h3 {
-  font-family: Oswald, sans-serif;
   color: white;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 24px;
-  line-height: 36px;
-  text-align: center;
 }
-section .firstconatiner {
-  position: absolute;
-  width: 727px;
-  height: 354px;
-  left: 124px;
-  top: 279px;
+section .mainseconde {
+  margin-left: 10%;
+}
+section .mainseconde .secondary {
+  width: 120px;
+  padding: 10px;
+  height: auto;
+  display: inline-block;
+  margin-top: 5%;
+  background: rgba(86, 49, 45, 0.9);
+  border: 1px solid #982424;
+  border-radius: 5px 5px 0px 0px;
+  box-sizing: border-box;
+  text-align: center;
+  color: white;
+}
+section .mainseconde .secondary:hover {
+  text-decoration: underline;
+  background-color: white;
+  color: rgba(86, 49, 45, 0.9);
+  transition: ease-in-out 0.8s;
+}
+section .firstcontainer {
+  margin-left: 7%;
+  display: flex;
+  width: 650px;
   background: rgba(86, 49, 45, 0.9);
   border-radius: 10px;
+  padding: 20px;
 }
-section .firstconatiner .secondcontainer {
-  position: absolute;
-  width: 700px;
-  height: 300px;
-  left: 10px;
-  top: 20px;
+section .firstcontainer .secondcontainer {
+  align-items: center;
+  padding: 20px;
   background: rgba(152, 36, 36, 0.72);
-  mix-blend-mode: lighten;
   border: 5px solid #982424;
   box-sizing: border-box;
   border-radius: 10px;
 }
-section .firstconatiner .secondcontainer .content {
-  font-family: Oswald;
+section .firstcontainer .secondcontainer .content {
+  padding: 20px;
+  color: white;
+  font-family: Oswald, serif;
   font-style: normal;
   font-weight: normal;
   font-size: 20px;
   line-height: 30px;
   text-align: justify;
-  color: #E5E5E5;
 }
 
-aside {
-  position: absolute;
-  width: 455px;
-  height: 1075px;
-  left: 1064px;
-  top: -26px;
-  background-color: rgba(0, 0, 0, 0.5);
-  border-radius: 10px;
+.last {
+  background-color: rgba(255, 255, 255, 0.3);
+  height: 100%;
+  display: inline-block;
+  float: right;
 }
-aside .logo {
-  position: absolute;
-  width: 282px;
-  text-align: center;
-  margin-left: 80px;
-  top: 17px;
-  opacity: 1;
+.last .form {
+  padding-left: 50px;
+  padding-right: 50px;
 }
-aside section h3 {
-  position: absolute;
-  width: 134px;
-  height: 53px;
-  top: 272px;
-  margin-left: 60px;
+.last .form .logo {
+  display: flex;
+}
+.last .form h3 {
   color: white;
-  font-family: Oswald;
+  font-family: Oswald, cursive;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 25px;
+  line-height: 35px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+.last .form h4 {
+  color: white;
+  font-family: Oswald, cursive;
   font-style: normal;
   font-weight: normal;
   font-size: 36px;
-  line-height: 53px;
+  line-height: 35px;
   text-align: center;
+  margin-bottom: 20px;
 }
-aside section .formulaire {
-  margin-left: 0px;
-  position: absolute;
-  top: 400px;
+.last .form form {
   color: white;
-  font-family: Oswald;
+  font-family: Oswald, cursive;
   font-style: normal;
   font-weight: normal;
   font-size: 20px;
-  line-height: 53px;
+  line-height: 35px;
   text-align: center;
 }
-aside section input {
+.last .form form input {
   background-color: rgba(0, 0, 0, 0.1);
   height: 25px;
   color: white;
 }
-aside section button {
-  width: 285px;
-  height: 82px;
+.last .form button {
+  width: 250px;
+  height: 60px;
   background: #982424;
   border-radius: 19px;
-  font-family: Myfont, Serif;
+  font-family: Myfont, serif;
   font-style: normal;
   font-weight: normal;
   font-size: 36px;
   line-height: 34px;
   text-align: center;
+  margin-top: 10px;
   color: #FFFFFF;
 }
-aside .footer {
-  position: absolute;
-  margin-left: 100px;
-  width: auto;
-  height: 83px;
+
+.last .form button a, .footer a {
+  text-decoration: none;
   color: white;
-  bottom: 0;
 }
 
-.language {
-  position: absolute;
-  display: inline-block;
-  align-items: baseline;
-  margin-left: 30px;
-}
-.language h3 {
-  display: inline-block;
-  vertical-align: middle;
-  margin-left: 30px;
-  padding-bottom: 10px;
+.last .form .footer {
   color: white;
+  margin-top: 45px;
+  padding-bottom: 10px;
+}
+
+footer {
+  display: flex;
+  vertical-align: middle;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+}
+footer img, footer h3 {
+  display: flex;
+  vertical-align: middle;
+  color: white;
+  padding: 10px;
 }
 
 /*# sourceMappingURL=style.css.map */
