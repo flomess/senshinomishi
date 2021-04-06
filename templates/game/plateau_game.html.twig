@@ -1,0 +1,94 @@
+<div class="row">
+    <div class="col-8">
+        Cartes de l'adversaire
+        {% for card in adversaire.handCards %}
+             <img height="100px" src="{{ asset('assets/cartes/dos.png') }}">
+            <span style="border: 1px solid black; margin:3px; padding:5px">
+                {{ cards[card].number }}
+            </span>
+        {% endfor %}
+    </div>
+    <div class="col-4">
+        Actions
+    </div>
+</div>
+<div class="row">
+    Plateau adversaire
+</div>
+<div class="row">
+
+
+                <span style="border: 1px solid black; margin:3px; padding:5px">
+                     <img height="100px" src="{{ asset('assets/cartes/ashibaru.png') }}">
+                </span>
+    <span style="border: 1px solid black; margin:3px; padding:5px">
+                     <img height="100px" src="{{ asset('assets/cartes/ninja.png') }}">
+                </span>
+    <span style="border: 1px solid black; margin:3px; padding:5px">
+                    <img height="100px" src="{{ asset('assets/cartes/ninjaf.png') }}">
+                </span>
+    <span style="border: 1px solid black; margin:3px; padding:5px">
+                     <img height="100px" src="{{ asset('assets/cartes/smu.png') }}">
+                </span>
+    <span style="border: 1px solid black; margin:3px; padding:5px">
+                     <img height="100px" src="{{ asset('assets/cartes/tessen.png') }}">
+                </span>
+    <span style="border: 1px solid black; margin:3px; padding:5px">
+                    <img height="100px" src="{{ asset('assets/cartes/yabusame-fin.png') }}">
+                </span>
+    <span style="border: 1px solid black; margin:3px; padding:5px">
+                     <img height="100px" src="{{ asset('assets/cartes/yabusame.png') }}">
+                </span>
+
+
+</div>
+<div class="row">
+    Mon Plateau
+</div>
+<div class="row">
+    <div class="col-8">
+        {% for card in moi.handCards %}
+             <img height="100px" src="{{ asset('assets/cartes/'~cards[card].picture) }}">
+            <span style="border: 1px solid black; margin:3px; padding:5px">
+                {{ cards[card].number }}
+
+                <input type="checkbox" name="carte_depot" value="{{ card }}" style="display: none" class="choixDepot">
+                    <input type="radio" name="carte_secret" value="{{ card }}"
+                           style="display: none"
+                           class="choixSecret">
+                </span>
+        {% endfor %}
+    </div>
+    <div class="col-4">
+        Mes Actions
+        {% if moi.actions['SECRET'] %}
+            <img width="80px" src="{{ asset('assets/cartes/secret.png') }}" alt="Secret" style="filter: grayscale(1);" >
+            {% else %}
+                <img width="80px" src="{{ asset('assets/cartes/secret.png') }}" alt="Secret" id="secret">
+
+        {% endif %}
+
+        {% if moi.actions['DEPOT'] %}
+            <img width="80px" src="{{ asset('assets/cartes/dépot.png') }}" alt="Secret" style="filter: grayscale(1);" >
+
+        {% else %}
+            <img width="80px" src="{{ asset('assets/cartes/dépot.png') }}" alt="Dépot" id="depot">
+        {% endif %}
+        {% if moi.actions['OFFRE'] %}
+            <img width="80px" src="{{ asset('assets/cartes/offre.png') }}" alt="Secret" style="filter: grayscale(1);" >
+
+        {% else %}
+            <img width="80px" src="{{ asset('assets/cartes/offre.png') }}" alt="Offre" id="offre">
+
+        {% endif %}
+        {% if moi.actions['ECHANGE'] %}
+            <img width="80px" src="{{ asset('assets/cartes/echange.png') }}" alt="Secret" style="filter: grayscale(1);">
+
+        {% else %}
+            <img width="80px" src="{{ asset('assets/cartes/echange.png') }}" alt="Echange" id="echange">
+            <br>
+        {% endif %}
+
+        <button id="valider" style="display: none">Valider action</button>
+    </div>
+</div>

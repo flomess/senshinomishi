@@ -20,9 +20,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="27c6abd4-2676-4f23-8b17-7dc3e4dc4454" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/public/assets/cartes/ashibaru.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/cartes/carte_hankyu.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/cartes/carte_katana.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/cartes/carte_kunai.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/cartes/carte_lance.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/cartes/carte_shuriken.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/cartes/carte_tessen2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/cartes/carte_yumi.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/cartes/dos.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/cartes/dépot.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/cartes/echange.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/cartes/ninja.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/cartes/ninjaf.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/cartes/offre.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/cartes/secret.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/cartes/smu.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/cartes/tessen.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/cartes/yabusame-fin.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/cartes/yabusame.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/game/plateau_game.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/GameController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/GameController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Game.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Game.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/profil/edit_infos.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/profil/edit_infos.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/game/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/game/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/game/show_game.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/game/show_game.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,25 +163,25 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/Form" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
     <property name="settings.editor.selected.configurable" value="preferences.fileTypes" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\wamp64\www\senshinomishi\public\assets\styles\r" />
-      <recent name="C:\wamp64\www\senshinomishi\public\assets\styles\a" />
-      <recent name="C:\wamp64\www\senshinomishi\public\assets\styles\profil" />
-      <recent name="C:\wamp64\www\senshinomishi\public\assets\imgs" />
-      <recent name="C:\wamp64\www\senshinomishi\public\assets\font" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\wamp64\www\senshinomishi\src\Form" />
       <recent name="C:\wamp64\www\senshinomishi\templates\profil" />
       <recent name="C:\wamp64\www\testpromo" />
       <recent name="C:\Users\flowz\Documents\MMI\Meiyo\site\promo" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\wamp64\www\senshinomishi\public\assets\cartes" />
+      <recent name="C:\wamp64\www\senshinomishi\public\assets" />
+      <recent name="C:\wamp64\www\senshinomishi\public\assets\styles\r" />
+      <recent name="C:\wamp64\www\senshinomishi\public\assets\styles\a" />
+      <recent name="C:\wamp64\www\senshinomishi\public\assets\styles\profil" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -187,7 +211,15 @@
       <workItem from="1617176477939" duration="1493000" />
       <workItem from="1617216296120" duration="2883000" />
       <workItem from="1617265110253" duration="1546000" />
-      <workItem from="1617275770328" duration="4473000" />
+      <workItem from="1617275770328" duration="5166000" />
+      <workItem from="1617450899022" duration="11483000" />
+      <workItem from="1617466525687" duration="4488000" />
+      <workItem from="1617550469569" duration="1580000" />
+      <workItem from="1617632886069" duration="3713000" />
+      <workItem from="1617695354025" duration="591000" />
+      <workItem from="1617712441489" duration="58000" />
+      <workItem from="1617714065470" duration="4189000" />
+      <workItem from="1617725731306" duration="1263000" />
     </task>
     <servers />
   </component>
@@ -215,10 +247,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1617124020240" />
-    <state x="549" y="154" key="FileChooserDialogImpl" timestamp="1615993272872">
+    <state x="549" y="154" key="FileChooserDialogImpl" timestamp="1617712502198">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="154" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1615993272872" />
+    <state x="549" y="154" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1617712502198" />
     <state x="561" y="135" key="NewPhpClassDialog" timestamp="1615914385880">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

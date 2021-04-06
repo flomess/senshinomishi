@@ -15,7 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class GameController extends AbstractController
 {
     /**
-     * @Route("/new-game", name="new_game")
+     * @Route("/game/new-game", name="new_game")
      */
     public function newGame(
         UserRepository $userRepository
@@ -28,7 +28,7 @@ class GameController extends AbstractController
     }
 
     /**
-     * @Route("/create-game", name="create_game")
+     * @Route("/game/create-game", name="create_game")
      */
     public function createGame(
         Request $request,
@@ -36,14 +36,15 @@ class GameController extends AbstractController
         UserRepository $userRepository,
         CardRepository $cardRepository
     ): Response {
-        $user1 = $userRepository->find($request->request->get('user1'));
-        $user2 = $userRepository->find($request->request->get('user2'));
+        $user1 = $this->getUser();
+        $user2 = $userRepository->findOneByPseudo($request->request->get('user2'));
 
-        if ($user1 !== $user2) {
+        if (($user1 !== $user2) && isset($user2)) {
             $game = new Game();
             $game->setUser1($user1);
             $game->setUser2($user2);
             $game->setDateCrated(new \DateTime('now'));
+            $game->setStatut(true);
 
             $entityManager->persist($game);
 
@@ -79,7 +80,7 @@ class GameController extends AbstractController
                 $carte = array_pop($tCards);
                 $tStack[] = $carte->getId();
             }
-            $round->setPioche($tStack);
+            $round->setStack($tStack);
             $round->setUser1Action([
                 'SECRET' => false,
                 'DEPOT' => false,
@@ -115,22 +116,163 @@ class GameController extends AbstractController
     }
 
     /**
-     * @Route("/show-game/{game}", name="show_game")
+     * @Route("/game/show-game/{game}", name="show_game")
      */
     public function showGame(
-        CardRepository $cardRepository,
         Game $game
     ): Response {
+
+        return $this->render('game/show_game.html.twig', [
+            'game' => $game
+        ]);
+    }
+
+    /**
+     * @Route("/game/get-tout-game/{game}", name="get_tour")
+     */
+    public function getTour(
+        Game $game
+    ): Response {
+        if ($this->getUser()->getId() === $game->getUser1()->getId() && $game->getQuiJoue() === 1) {
+            return $this->json(true);
+        }
+
+        if ($this->getUser()->getId() === $game->getUser2()->getId() && $game->getQuiJoue() === 2) {
+            return $this->json(true);
+        }
+
+        return $this->json( false);
+    }
+
+    /**
+     * @param Game $game
+     * @route("/game/refresh/{game}", name="refresh_plateau_game")
+     */
+    public function refreshPlateauGame(CardRepository $cardRepository, Game $game)
+    {
         $cards = $cardRepository->findAll();
         $tCards = [];
         foreach ($cards as $card) {
             $tCards[$card->getId()] = $card;
         }
 
-        return $this->render('game/show_game.html.twig', [
+        if ($this->getUser()->getId() === $game->getUser1()->getId()) {
+            $moi['handCards'] = $game->getRounds()[0]->getUser1Cards();
+            $moi['actions'] = $game->getRounds()[0]->getUser1Action();
+            $moi['board'] = $game->getRounds()[0]->getUser1Board();
+            $adversaire['handCards'] = $game->getRounds()[0]->getUser2Cards();
+            $adversaire['actions'] = $game->getRounds()[0]->getUser2Action();
+            $adversaire['board'] = $game->getRounds()[0]->getUser2Board();
+        } elseif ($this->getUser()->getId() === $game->getUser2()->getId()) {
+            $moi['handCards'] = $game->getRounds()[0]->getUser2Cards();
+            $moi['actions'] = $game->getRounds()[0]->getUser2Action();
+            $moi['board'] = $game->getRounds()[0]->getUser2Board();
+            $adversaire['handCards'] = $game->getRounds()[0]->getUser1Cards();
+            $adversaire['actions'] = $game->getRounds()[0]->getUser1Action();
+            $adversaire['board'] = $game->getRounds()[0]->getUser1Board();
+        } else {
+            return $this->redirectToRoute('accueil');
+        }
+
+        return $this->render('game/plateau_game.html.twig', [
             'game' => $game,
             'set' => $game->getRounds()[0],
-            'cards' => $tCards
+            'cards' => $tCards,
+            'moi' => $moi,
+            'adversaire' => $adversaire
         ]);
+    }
+
+    /**
+     * @Route("/game/action-game/{game}", name="action_game")
+     */
+    public function actionGame(
+        EntityManagerInterface $entityManager,
+        Request $request, Game $game){
+
+
+        $action = $request->request->get('action');
+        $user = $this->getUser();
+        $round = $game->getRounds()[0]; //a gérer selon le round en cours
+
+        if ($game->getUser1()->getId() === $user->getId())
+        {
+            $joueur = 1;
+        } elseif ($game->getUser2()->getId() === $user->getId()) {
+            $joueur = 2;
+        } else {
+            return $this->redirectToRoute('accueil');
+        }
+
+        switch ($action) {
+            case 'secret':
+                $carte = $request->request->get('carte');
+                if ($joueur === 1) {
+                    $actions = $round->getUser1Action(); //un tableau...
+                    $actions['SECRET'] = [$carte]; //je sauvegarde la carte cachée dans mes actions
+                    $round->setUser1Action($actions); //je mets à jour le tableau
+                    $main = $round->getUser1Cards();
+                    $indexCarte = array_search($carte, $main); //je récupère l'index de la carte a supprimer dans ma main
+                    unset($main[$indexCarte]); //je supprime la carte de ma main
+                    $stack = $round->getStack();
+                    $cartePiochee = array_shift($stack);
+                    $main[] = $cartePiochee;
+                    $round->setUser1Cards($main);
+                    $round->setStack($stack);
+                    $game->setQuiJoue(2);
+                } else {
+                    $actions = $round->getUser2Action(); //un tableau...
+                    $actions['SECRET'] = [$carte]; //je sauvegarde la carte cachée dans mes actions
+                    $round->setUser2Action($actions); //je mets à jour le tableau
+                    $main = $round->getUser2Cards();
+                    $indexCarte = array_search($carte, $main); //je récupère l'index de la carte a supprimer dans ma main
+                    unset($main[$indexCarte]); //je supprime la carte de ma main
+                    $stack = $round->getStack();
+                    $cartePiochee = array_shift($stack);
+                    $main[] = $cartePiochee;
+                    $round->setUser2Cards($main);
+                    $round->setStack($stack);
+                    $game->setQuiJoue(1);
+                }
+                break;
+            case 'depot':
+                $cartes = $request->request->get('carte');
+                if ($joueur === 1) {
+                    $actions = $round->getUser1Action(); //un tableau...
+                    $actions['DEPOT'] = true;
+                    $round->setUser1Action($actions); //je mets à jour le tableau
+                    $main = $round->getUser1Cards();
+                    $indexCarte1 = array_search($cartes['card1'], $main);
+                    $indexCarte2 = array_search($cartes['card2'], $main);
+                    unset($main[$indexCarte1]); //je supprime la carte de ma main
+                    unset($main[$indexCarte2]); //je supprime la carte de ma main
+                    $stack = $round->getStack();
+                    $cartePiochee = array_shift($stack);
+                    $main[] = $cartePiochee;
+                    $round->setUser1Cards($main);
+                    $round->setStack($stack);
+                    $game->setQuiJoue(2);
+                } else {
+                    $actions = $round->getUser2Action(); //un tableau...
+                    $actions['DEPOT'] = true;
+                    $round->setUser2Action($actions); //je mets à jour le tableau
+                    $main = $round->getUser2Cards();
+                    $indexCarte1 = array_search($cartes['card1'], $main);
+                    $indexCarte2 = array_search($cartes['card2'], $main);
+                    unset($main[$indexCarte1]); //je supprime la carte de ma main
+                    unset($main[$indexCarte2]); //je supprime la carte de ma main
+                    $stack = $round->getStack();
+                    $cartePiochee = array_shift($stack);
+                    $main[] = $cartePiochee;
+                    $round->setUser2Cards($main);
+                    $round->setStack($stack);
+                    $game->setQuiJoue(1);
+                }
+                break;
+        }
+
+        $entityManager->flush();
+
+        return $this->json(true);
     }
 }
