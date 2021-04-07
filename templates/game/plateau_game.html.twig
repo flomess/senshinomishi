@@ -3,13 +3,38 @@
         Cartes de l'adversaire
         {% for card in adversaire.handCards %}
              <img height="100px" src="{{ asset('assets/cartes/dos.png') }}">
-            <span style="border: 1px solid black; margin:3px; padding:5px">
-                {{ cards[card].number }}
-            </span>
+
         {% endfor %}
     </div>
     <div class="col-4">
         Actions
+        {% if adversaire.actions['SECRET'] %}
+            <img width="80px" src="{{ asset('assets/cartes/secret.png') }}" alt="Secret" style="filter: grayscale(1);" >
+        {% else %}
+            <img width="80px" src="{{ asset('assets/cartes/secret.png') }}" alt="Secret">
+
+        {% endif %}
+
+        {% if adversaire.actions['DEPOT'] %}
+            <img width="80px" src="{{ asset('assets/cartes/dépot.png') }}" alt="Secret" style="filter: grayscale(1);" >
+
+        {% else %}
+            <img width="80px" src="{{ asset('assets/cartes/dépot.png') }}" alt="Dépot">
+        {% endif %}
+        {% if adversaire.actions['OFFRE'] %}
+            <img width="80px" src="{{ asset('assets/cartes/offre.png') }}" alt="Secret" style="filter: grayscale(1);" >
+
+        {% else %}
+            <img width="80px" src="{{ asset('assets/cartes/offre.png') }}" alt="Offre">
+
+        {% endif %}
+        {% if adversaire.actions['ECHANGE'] %}
+            <img width="80px" src="{{ asset('assets/cartes/echange.png') }}" alt="Secret" style="filter: grayscale(1);">
+
+        {% else %}
+            <img width="80px" src="{{ asset('assets/cartes/echange.png') }}" alt="Echange">
+            <br>
+        {% endif %}
     </div>
 </div>
 <div class="row">
@@ -48,15 +73,10 @@
 <div class="row">
     <div class="col-8">
         {% for card in moi.handCards %}
+            <input type="checkbox" name="carte_select" id="carte{{ card }}" value="{{ card }}" style="display: none" class="choixDepot">
+            <label for="carte{{ card }}">
              <img height="100px" src="{{ asset('assets/cartes/'~cards[card].picture) }}">
-            <span style="border: 1px solid black; margin:3px; padding:5px">
-                {{ cards[card].number }}
-
-                <input type="checkbox" name="carte_depot" value="{{ card }}" style="display: none" class="choixDepot">
-                    <input type="radio" name="carte_secret" value="{{ card }}"
-                           style="display: none"
-                           class="choixSecret">
-                </span>
+            </label>
         {% endfor %}
     </div>
     <div class="col-4">

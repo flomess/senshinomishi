@@ -1,15 +1,20 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}Senshi no Mishi | Partie en cours{% endblock %}
+{% block stylesheets %}
+<style>
+    #plateau input:checked + label img{
+        filter: grayscale(100);
+    }
+</style>
+{% endblock %}
 {% block body %}
+
     <div id="plateau">
         {{ render(controller('App\\Controller\\GameController::refreshPlateauGame', {game:game.id})) }}
     </div>
 
     <div id="message">Chargement...</div>
-{% endblock %}
-
-{% block title %}
-
 {% endblock %}
 
 {% block javascripts %}
@@ -32,7 +37,7 @@
                         $('#message').html('Tour de votre adversaire')
                         $('#plateau').load("{{ path('refresh_plateau_game', {game:game.id}) }}")
                     } else {
-                        $('#message').html('C\'est mon tour...')
+                        $('#message').html('à toi batard')
                         if (data === true){
                             $('#plateau').load("{{ path('refresh_plateau_game', {game:game.id}) }}")
                         }
@@ -47,36 +52,45 @@
         let action
         $(document).on('click', '#secret', function(){
             console.log('secret')
+            $("input:checkbox").click(function () {
+                var bol = $("input:checkbox:checked").length >= 1;
+                $("input:checkbox").not(":checked").attr("disabled", bol);
+                if ($("input:checkbox:checked").length >= 1){
+                    $('#valider').show();
+                } else {
+                    $('#valider').hide();
+                }
+            });
             action = 'secret' //mémorise l'action en cours
-            $('.choixSecret').show()
-            $('#valider').show()
         })
         $(document).on('click', '#depot', function(){
             console.log('depot')
             $("input:checkbox").click(function () {
                 var bol = $("input:checkbox:checked").length >= 2;
                 $("input:checkbox").not(":checked").attr("disabled", bol);
+                if ($("input:checkbox:checked").length >= 2){
+                    $('#valider').show();
+                } else {
+                    $('#valider').hide();
+                }
             });
             action = 'depot' //mémorise l'action en cours
-            $('.choixDepot').show()
-            $('.choixSecret').hide()
-            $('#valider').show()
+
         })
         $(document).on('click', '#valider', function(){
             switch (action) {
                 case 'secret':
                     donneesAction = {
                         action: 'secret',
-                        carte: $('input[name="carte_secret"]:checked').val()
+                        carte: $('input[name="carte_select"]:checked').val()
                     }
                     break;
                 case 'depot':
                     donneesAction = {
                         action: 'depot',
                         carte: {
-                            card1:document.querySelectorAll('input[name="carte_depot"]:checked')[0].value,
-                            card2:document.querySelectorAll('input[name="carte_depot"]:checked')[1].value
-
+                            card1:document.querySelectorAll('input[name="carte_select"]:checked')[0].value,
+                            card2:document.querySelectorAll('input[name="carte_select"]:checked')[1].value
                         }
                     }
                     break;
