@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Card;
 use App\Entity\Game;
 use App\Entity\Round;
 use App\Repository\CardRepository;
@@ -104,6 +105,10 @@ class GameController extends AbstractController
                 'EMPL6' => ['N'],
                 'EMPL7' => ['N']
             ]);
+            $userboard = [];
+            $round->setUser1Board($userboard);
+            $round->setUser2Board($userboard);
+
             $entityManager->persist($round);
             $entityManager->flush();
 
@@ -160,6 +165,8 @@ class GameController extends AbstractController
             $moi['handCards'] = $game->getRounds()[0]->getUser1Cards();
             $moi['actions'] = $game->getRounds()[0]->getUser1Action();
             $moi['board'] = $game->getRounds()[0]->getUser1Board();
+            $moi['pseudo'] = $this->getUser()->getUsername();
+            $adversaire['pseudo'] = $game->getUser2()->getUsername();
             $adversaire['handCards'] = $game->getRounds()[0]->getUser2Cards();
             $adversaire['actions'] = $game->getRounds()[0]->getUser2Action();
             $adversaire['board'] = $game->getRounds()[0]->getUser2Board();
@@ -167,13 +174,15 @@ class GameController extends AbstractController
             $moi['handCards'] = $game->getRounds()[0]->getUser2Cards();
             $moi['actions'] = $game->getRounds()[0]->getUser2Action();
             $moi['board'] = $game->getRounds()[0]->getUser2Board();
+            $moi['pseudo'] = $this->getUser()->getUsername();
+            $adversaire['pseudo'] = $game->getUser1()->getUsername();
             $adversaire['handCards'] = $game->getRounds()[0]->getUser1Cards();
             $adversaire['actions'] = $game->getRounds()[0]->getUser1Action();
             $adversaire['board'] = $game->getRounds()[0]->getUser1Board();
+
         } else {
             return $this->redirectToRoute('accueil');
         }
-
         return $this->render('game/plateau_game.html.twig', [
             'game' => $game,
             'set' => $game->getRounds()[0],
@@ -188,7 +197,7 @@ class GameController extends AbstractController
      */
     public function actionGame(
         EntityManagerInterface $entityManager,
-        Request $request, Game $game){
+        Request $request, Game $game, CardRepository $cardRepository ){
 
 
         $action = $request->request->get('action');
@@ -267,6 +276,82 @@ class GameController extends AbstractController
                     $round->setUser2Cards($main);
                     $round->setStack($stack);
                     $game->setQuiJoue(1);
+                }
+                break;
+            case 'offre':
+                $cartes = $request->request->get('carte');
+                if ($joueur === 1) {
+                    $actions = $round->getUser1Action(); //un tableau...
+                    $actions['OFFRE'][] = $cartes['card1'];
+                    $actions['OFFRE'][] = $cartes['card2'];
+                    $actions['OFFRE'][] = $cartes['card3'];
+                    $round->setUser1Action($actions); //je mets à jour le tableau
+                    $main = $round->getUser1Cards();
+                    $indexCarte1 = array_search($cartes['card1'], $main);
+                    $indexCarte2 = array_search($cartes['card2'], $main);
+                    $indexCarte3 = array_search($cartes['card3'], $main);
+                    unset($main[$indexCarte1]); //je supprime la carte de ma main
+                    unset($main[$indexCarte2]); //je supprime la carte de ma main
+                    unset($main[$indexCarte3]); //je supprime la carte de ma main
+                    $stack = $round->getStack();
+                    $cartePiochee = array_shift($stack);
+                    $main[] = $cartePiochee;
+                    $round->setUser1Cards($main);
+                    $round->setStack($stack);
+                    $game->setQuiJoue(2);
+                } else {
+                    $actions = $round->getUser2Action(); //un tableau...
+                    $actions['OFFRE'][] = $cartes['card1'];
+                    $actions['OFFRE'][] = $cartes['card2'];
+                    $actions['OFFRE'][] = $cartes['card3'];
+                    $round->setUser2Action($actions); //je mets à jour le tableau
+                    $main = $round->getUser2Cards();
+                    $indexCarte1 = array_search($cartes['card1'], $main);
+                    $indexCarte2 = array_search($cartes['card2'], $main);
+                    $indexCarte3 = array_search($cartes['card3'], $main);
+                    unset($main[$indexCarte1]); //je supprime la carte de ma main
+                    unset($main[$indexCarte2]); //je supprime la carte de ma main
+                    unset($main[$indexCarte3]); //je supprime la carte de ma main
+                    $stack = $round->getStack();
+                    $cartePiochee = array_shift($stack);
+                    $main[] = $cartePiochee;
+                    $round->setUser2Cards($main);
+                    $round->setStack($stack);
+                    $game->setQuiJoue(1);
+                }
+                break;
+            case 'offre_valid':
+                $carte = $request->request->get('carte');
+                if ($joueur === 1) {
+                    $actions = $round->getUser2Action(); //un tableau...
+                    $board1 = $round->getUser1Board();
+                    $board2 = $round->getUser2Board();
+                    $carteChoisie = array_search($carte, $actions['OFFRE']);
+                    array_splice($actions['OFFRE'], $carteChoisie, 1);
+                    $board1[] = $carte;
+                    $board2[] = $actions['OFFRE'][0];
+                    $board2[] = $actions['OFFRE'][1];
+                    $actions['OFFRE'] = 'done';
+                    $round->setUser2Action($actions);
+                    $round->setUser1Board($board1);
+                    $round->setUser2Board($board2);
+                    $round->setUser2Action($actions); //je mets à jour le tableau
+                    $game->setQuiJoue(1);
+                } else {
+                    $actions = $round->getUser1Action(); //un tableau...
+                    $board1 = $round->getUser1Board();
+                    $board2 = $round->getUser2Board();
+                    $carteChoisie = array_search($carte, $actions['OFFRE']);
+                    array_splice($actions['OFFRE'], $carteChoisie, 1);
+                    $board2[] = $carte;
+                    $board1[] = $actions['OFFRE'][0];
+                    $board1[] = $actions['OFFRE'][1];
+                    $actions['OFFRE'] = 'done';
+                    $round->setUser1Action($actions);
+                    $round->setUser1Board($board1);
+                    $round->setUser2Board($board2);
+                    $round->setUser1Action($actions); //je mets à jour le tableau
+                    $game->setQuiJoue(2);
                 }
                 break;
         }

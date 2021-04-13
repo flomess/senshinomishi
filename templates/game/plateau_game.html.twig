@@ -1,114 +1,146 @@
+<div id="game" >
+    {% if (adversaire.actions['OFFRE']) and (adversaire.actions['OFFRE'] != 'done') %}
+        <div id="popup">
+            <div id="popup-content">
+                <h2 style="text-align: center;border-bottom: white solid 2px ;border-top: white solid 2px ">Sélectionnez une carte à offrir</h2>
+                <br>
+                {% for card in adversaire.actions['OFFRE'] %}
+                    <input type="checkbox" name="carte_select" id="carte{{ card }}" value="{{ card }}" style="display: none" class="choixOffre">
+                    <label for="carte{{ card }}">
+                        <img height="100px" src="{{ asset('assets/cartes/'~cards[card].picture) }}">
+                    </label>
+                {% endfor %}
+                <br><button id="valider" style="display: none">Valider choix</button>
+            </div>
+        </div>
+    {% endif %}
 <div class="row">
-    <div class="col-8">
-        Cartes de l'adversaire
+    <div class="col-8" style="text-align: center">
+
         {% for card in adversaire.handCards %}
-             <img height="100px" src="{{ asset('assets/cartes/dos.png') }}">
+             <img height="70px" src="{{ asset('assets/cartes/dos.png') }}">
 
         {% endfor %}
     </div>
-    <div class="col-4">
-        Actions
+    <div class="col-4" style="text-align: center">
+
         {% if adversaire.actions['SECRET'] %}
-            <img width="80px" src="{{ asset('assets/cartes/secret.png') }}" alt="Secret" style="filter: grayscale(1);" >
+            <img width="50px" src="{{ asset('assets/cartes/secret.png') }}" alt="Secret" style="filter: grayscale(1);" >
         {% else %}
-            <img width="80px" src="{{ asset('assets/cartes/secret.png') }}" alt="Secret">
+            <img width="50px" src="{{ asset('assets/cartes/secret.png') }}" alt="Secret">
 
         {% endif %}
 
         {% if adversaire.actions['DEPOT'] %}
-            <img width="80px" src="{{ asset('assets/cartes/dépot.png') }}" alt="Secret" style="filter: grayscale(1);" >
+            <img width="50px" src="{{ asset('assets/cartes/dépot.png') }}" alt="Secret" style="filter: grayscale(1);" >
 
         {% else %}
-            <img width="80px" src="{{ asset('assets/cartes/dépot.png') }}" alt="Dépot">
+            <img width="50px" src="{{ asset('assets/cartes/dépot.png') }}" alt="Dépot">
         {% endif %}
         {% if adversaire.actions['OFFRE'] %}
-            <img width="80px" src="{{ asset('assets/cartes/offre.png') }}" alt="Secret" style="filter: grayscale(1);" >
+            <img width="50px" src="{{ asset('assets/cartes/offre.png') }}" alt="Secret" style="filter: grayscale(1);" >
 
         {% else %}
-            <img width="80px" src="{{ asset('assets/cartes/offre.png') }}" alt="Offre">
+            <img width="50px" src="{{ asset('assets/cartes/offre.png') }}" alt="Offre">
 
         {% endif %}
         {% if adversaire.actions['ECHANGE'] %}
-            <img width="80px" src="{{ asset('assets/cartes/echange.png') }}" alt="Secret" style="filter: grayscale(1);">
+            <img width="50px" src="{{ asset('assets/cartes/echange.png') }}" alt="Secret" style="filter: grayscale(1);">
 
         {% else %}
-            <img width="80px" src="{{ asset('assets/cartes/echange.png') }}" alt="Echange">
+            <img width="50px" src="{{ asset('assets/cartes/echange.png') }}" alt="Echange">
             <br>
         {% endif %}
-    </div>
+
 </div>
-<div class="row">
-    Plateau adversaire
+    <div class="row">
+    {% for card in adversaire.board %}
+
+        <img height="70px" src="{{ asset('assets/cartes/'~cards[card].picture) }}">
+
+    {% endfor %}
 </div>
-<div class="row">
+<div class="row" style="justify-content: space-between">
 
 
-                <span style="border: 1px solid black; margin:3px; padding:5px">
+
                      <img height="100px" src="{{ asset('assets/cartes/ashibaru.png') }}">
-                </span>
-    <span style="border: 1px solid black; margin:3px; padding:5px">
+
                      <img height="100px" src="{{ asset('assets/cartes/ninja.png') }}">
-                </span>
-    <span style="border: 1px solid black; margin:3px; padding:5px">
+
                     <img height="100px" src="{{ asset('assets/cartes/ninjaf.png') }}">
-                </span>
-    <span style="border: 1px solid black; margin:3px; padding:5px">
+
                      <img height="100px" src="{{ asset('assets/cartes/smu.png') }}">
-                </span>
-    <span style="border: 1px solid black; margin:3px; padding:5px">
+
                      <img height="100px" src="{{ asset('assets/cartes/tessen.png') }}">
-                </span>
-    <span style="border: 1px solid black; margin:3px; padding:5px">
+
                     <img height="100px" src="{{ asset('assets/cartes/yabusame-fin.png') }}">
-                </span>
-    <span style="border: 1px solid black; margin:3px; padding:5px">
+
                      <img height="100px" src="{{ asset('assets/cartes/yabusame.png') }}">
-                </span>
+
 
 
 </div>
 <div class="row">
-    Mon Plateau
+    {% for card in moi.board %}
+
+               <img height="70px" src="{{ asset('assets/cartes/'~cards[card].picture) }}">
+
+    {% endfor %}
 </div>
 <div class="row">
     <div class="col-8">
         {% for card in moi.handCards %}
             <input type="checkbox" name="carte_select" id="carte{{ card }}" value="{{ card }}" style="display: none" class="choixDepot">
             <label for="carte{{ card }}">
-             <img height="100px" src="{{ asset('assets/cartes/'~cards[card].picture) }}">
+             <img height="70px" src="{{ asset('assets/cartes/'~cards[card].picture) }}">
             </label>
         {% endfor %}
     </div>
-    <div class="col-4">
-        Mes Actions
+
+
+
+    <div class="col-4" style="padding-bottom: 10px">
+
         {% if moi.actions['SECRET'] %}
-            <img width="80px" src="{{ asset('assets/cartes/secret.png') }}" alt="Secret" style="filter: grayscale(1);" >
+            <img width="50px" src="{{ asset('assets/cartes/secret.png') }}" alt="Secret" style="filter: grayscale(1);" >
             {% else %}
-                <img width="80px" src="{{ asset('assets/cartes/secret.png') }}" alt="Secret" id="secret">
+                <img width="50px" src="{{ asset('assets/cartes/secret.png') }}" alt="Secret" id="secret">
 
         {% endif %}
 
         {% if moi.actions['DEPOT'] %}
-            <img width="80px" src="{{ asset('assets/cartes/dépot.png') }}" alt="Secret" style="filter: grayscale(1);" >
+            <img width="50px" src="{{ asset('assets/cartes/dépot.png') }}" alt="Secret" style="filter: grayscale(1);" >
 
         {% else %}
-            <img width="80px" src="{{ asset('assets/cartes/dépot.png') }}" alt="Dépot" id="depot">
+            <img width="50px" src="{{ asset('assets/cartes/dépot.png') }}" alt="Dépot" id="depot">
         {% endif %}
         {% if moi.actions['OFFRE'] %}
-            <img width="80px" src="{{ asset('assets/cartes/offre.png') }}" alt="Secret" style="filter: grayscale(1);" >
+            <img width="50px" src="{{ asset('assets/cartes/offre.png') }}" alt="Secret" style="filter: grayscale(1);" >
 
         {% else %}
-            <img width="80px" src="{{ asset('assets/cartes/offre.png') }}" alt="Offre" id="offre">
+            <img width="50px" src="{{ asset('assets/cartes/offre.png') }}" alt="Offre" id="offre">
 
         {% endif %}
         {% if moi.actions['ECHANGE'] %}
-            <img width="80px" src="{{ asset('assets/cartes/echange.png') }}" alt="Secret" style="filter: grayscale(1);">
+            <img width="50px" src="{{ asset('assets/cartes/echange.png') }}" alt="Secret" style="filter: grayscale(1);">
 
         {% else %}
-            <img width="80px" src="{{ asset('assets/cartes/echange.png') }}" alt="Echange" id="echange">
+            <img width="50px" src="{{ asset('assets/cartes/echange.png') }}" alt="Echange" id="echange">
             <br>
         {% endif %}
+        <div class="row">
+            <button id="valider" style="display: none">Valider action</button>
+        <div id="message">Chargement... </div>
 
-        <button id="valider" style="display: none">Valider action</button>
     </div>
+    </div>
+
+
+    </div>
+
+
+</div>
+
+</div>
 </div>

@@ -1,0 +1,137 @@
+@font-face {
+  font-family: "japan_font";
+  src: url("../../font/Oswald.ttf");
+  font-weight: normal;
+}
+html, body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+  position: relative;
+  margin: 0;
+  font-family: Roboto;
+}
+
+h1, h2, h3, a, label {
+  font-family: japan_font;
+  text-decoration: none;
+  color: white;
+  font-weight: 400;
+}
+
+p {
+  color: #982424;
+}
+
+body {
+  background-color: #e8a0a0;
+}
+body #main_content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+  position: relative;
+}
+body #main_content header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 90%;
+  height: auto;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+  position: relative;
+  background-color: #982424;
+  justify-content: space-between;
+  padding: 0 5% 0 5%;
+  position: absolute;
+  top: 0;
+}
+body #main_content header a {
+  font-size: 2em;
+  text-decoration: underline;
+}
+body #main_content header nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 20%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+  position: relative;
+  justify-content: flex-start;
+  padding: 1% 0 1% 0;
+}
+body #main_content header nav a {
+  font-size: 2em;
+  text-decoration: none;
+  margin-right: 10%;
+}
+body #main_content #recherche {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  height: auto;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+  position: relative;
+  justify-content: center;
+}
+body #main_content #recherche div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 50%;
+  height: auto;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+  position: relative;
+}
+body #main_content #recherche div p {
+  font-size: 2em;
+  text-align: center;
+}
+body #main_content #recherche div form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  height: auto;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+  position: relative;
+  justify-content: space-around;
+}
+body #main_content #recherche div form input {
+  height: 50px;
+  width: 200px;
+  background-color: #982424;
+  border: 2px white solid;
+  color: white;
+}
+
+/*# sourceMappingURL=style_recherche.css.map */

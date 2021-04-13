@@ -1,13 +1,27 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Senshi no Mishi | Débuter une partie{% endblock %}
-
+{% block stylesheets %}
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/styles/a/style_recherche.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+{% endblock %}
 {% block body %}
-    <form action="{{ path('create_game') }}" method="post">
-        <label for="user2">Recherchez le pseudo de votre adversaire :</label>
-        <input type="text" name="user2">
+    <div id="main_content">
+        <header>
+            <nav>
+                <a href="{{ path('accueil') }}">Accueil</a>
+                <a href="{{ path('profil') }}">Profil</a>
+            </nav>
+            <a href="{{ path('app_logout') }}">Déconnexion</a>
+        </header>
+        <section id="recherche">
 
-        <button type="submit">Commencer la partie</button>
 
-    </form>
+            <div><p>Entrez le pseudo de votre futur adversaire !</p>
+                <form action="{{ path('create_game') }}" method="post"><input type="text" name="user2" style="width: 400px;">
+                    <input type="submit" value="Commencer"></form>
+                <p style="font-size: 1em;">La partie se lancera lorsque votre adversaire aura entré votre pseudo.</p>
+            </div>
+        </section>
+    </div>
 {% endblock %}

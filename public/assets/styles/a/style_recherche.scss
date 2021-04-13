@@ -1,0 +1,97 @@
+@import 'colors';
+
+@mixin classicDiv($height, $width) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: $width;
+    height: $height;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;
+    position: relative;
+}
+
+@font-face {
+    font-family: 'japan_font';
+    src: url('../../font/Oswald.ttf');
+    font-weight: normal;
+}
+
+html, body {
+    @include classicDiv(100%,100%);
+    margin: 0;
+    font-family: Roboto;
+}
+
+h1, h2, h3, a, label {
+    font-family: japan_font;
+    text-decoration: none;
+    color: white;
+    font-weight: 400;
+}
+
+p {
+    color: $red;
+}
+
+body {
+    background-color: lighten($red,40%);
+    #main_content {
+        @include classicDiv(100%,100%);
+
+        header {
+            @include classicDiv(auto,90%);
+            background-color: $red;
+            justify-content: space-between;
+            padding: 0 5% 0 5%;
+            position: absolute;
+            top: 0;
+
+            a {
+                font-size: 2em;
+                text-decoration: underline
+            }
+
+            nav {
+                @include classicDiv(100%,20%);
+                justify-content: flex-start;
+                padding: 1% 0 1% 0;
+
+                a {
+                    font-size: 2em;
+                    text-decoration: none;
+                    margin-right: 10%;
+                }
+            }
+        }//header
+
+        #recherche {
+            @include classicDiv(auto,100%); 
+            justify-content: center;
+
+            div {
+                @include classicDiv(auto,50%); 
+         
+                p {
+                    font-size: 2em;
+                    text-align: center;
+                }
+
+                form {
+                    @include classicDiv(auto,100%);
+                    justify-content: space-around;
+
+                    input {
+                        height: 50px;
+                        width: 200px;
+                        background-color: $red;
+                        border: 2px white solid;
+                        color: white;
+                    }
+                }
+            }
+        }
+    }
+}
