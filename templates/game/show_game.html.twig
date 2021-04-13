@@ -6,7 +6,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 <style>
     #board input:checked + label img{
-        filter: grayscale(100);
+        transform: scale(1.3);
+        transition: 0.3s;
     }
 </style>
 {% endblock %}
@@ -15,8 +16,8 @@
         <header>
             <nav>
                 <div>
-                    <a href="">Accueil</a>
-                    <a href="">Profil</a>
+                    <a href="{{ path('accueil') }}">Accueil</a>
+                    <a href="{{ path('profil') }}">Profil</a>
                 </div>
                 <div>
                     <a href="" id="notification_ico"><img width="50px" src="{{ asset('assets/imgs/notification.png') }}" alt="Notification"></a>
@@ -68,6 +69,7 @@
     <script>
         let boucle
         $(document).ready(function(){
+            $("input:checkbox").not(":checked").attr("disabled", true);
             boucle = setInterval(refreshGame, 3000);
         })
         $(document).on('click', '#finDeTour', function() {
@@ -81,10 +83,11 @@
                 success: function(data) {
                     console.log(data)
                     if (data === false) {
-                        $('#message').html("Tour de votre adversaire" )
+                        $('#help').html('<h2>Tour adverse</h2><br> Veuillez patienter pendant que votre adversaire joue.<br><br>')
+
                         $('#plateau').load("{{ path('refresh_plateau_game', {game:game.id}) }}")
                     } else {
-                        $('#message').html('à toi')
+                        $('#help').html('<h2>C\'est à vous !</h2><br> Veuillez sélectionner une action.<br><br>')
                         if (data === true){
                             $('#plateau').load("{{ path('refresh_plateau_game', {game:game.id}) }}")
                         }
@@ -97,11 +100,15 @@
             })
         }
         let action
+
         $(document).on('click', '#secret', function(){
-            $("input:checkbox").click(function () {
-                var bol = $("input:checkbox:checked").length >= 1;
-                $("input:checkbox").not(":checked").attr("disabled", bol);
-                if ($("input:checkbox:checked").length >= 1){
+            $('#valider').hide();
+            $('#help').html('<h2>Secret</h2><br> Sélectionnez une carte. Celle-ci sera cachée et ne sera révélée qu\'à la fin de la manche.<br><br>')
+            $('input:checkbox').prop('checked', false).prop('disabled', false)
+            $('input:checkbox').click(function () {
+                var bol = $('input:checkbox:checked').length >= 1;
+                $('input:checkbox').not('checked').attr('disabled', bol);
+                if (bol === true){
                     $('#valider').show();
                 } else {
                     $('#valider').hide();
@@ -110,39 +117,43 @@
             action = 'secret' //mémorise l'action en cours
         })
         $(document).on('click', '#depot', function(){
-            $("input:checkbox").click(function () {
-                var bol = $("input:checkbox:checked").length >= 2;
-                $("input:checkbox").not(":checked").attr("disabled", bol);
-                if ($("input:checkbox:checked").length >= 2){
+            $('#valider').hide();
+            $('#help').html('<h2>Dépôt</h2><br> Sélectionnez deux cartes. Elles seront retirées de la manche.<br><br>')
+            $('input:checkbox').prop('checked', false).prop('disabled', false)
+            $('input:checkbox').click(function () {
+                var bol = $('input:checkbox:checked').length >= 2;
+                $('input:checkbox').not('checked').attr('disabled', bol);
+                if (bol === true){
                     $('#valider').show();
                 } else {
                     $('#valider').hide();
                 }
             });
             action = 'depot' //mémorise l'action en cours
-
         })
         $(document).on('click', '#offre', function(){
-            $("input:checkbox").click(function () {
-                var bol = $("input:checkbox:checked").length >= 3;
-                $("input:checkbox").not(":checked").attr("disabled", bol);
-                if ($("input:checkbox:checked").length >= 3){
+            $('#valider').hide();
+            $('#help').html('<h2>Offre</h2><br> Sélectionnez trois cartes. Votre adversaire en sélectionnera une et vous offrirez les deux autres.<br><br>')
+            $('input:checkbox').prop('checked', false).prop('disabled', false)
+            $('input:checkbox').click(function () {
+                var bol = $('input:checkbox:checked').length >= 3;
+                $('input:checkbox').not('checked').attr('disabled', bol);
+                if (bol === true){
                     $('#valider').show();
                 } else {
                     $('#valider').hide();
                 }
             });
             action = 'offre' //mémorise l'action en cours
-
         })
         $(document).on('click', '.choixOffre', function(){
 
                 var bol = $("input:checkbox:checked").length >= 1;
                 $("input:checkbox").not(":checked").attr("disabled", bol);
                 if ($("input:checkbox:checked").length >= 1){
-                    $('#valider').show();
+                    $('#valider').fadeIn();
                 } else {
-                    $('#valider').hide();
+                    $('#valider').fadeOut();
                 }
 
             action = 'offre_valid' //mémorise l'action en cours

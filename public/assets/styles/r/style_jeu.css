@@ -111,7 +111,7 @@ body #main_content header nav div {
 }
 
 #valider {
-  background-color: #982424;
+  background-color: transparent;
   border: 2px white solid;
   color: white;
   font-family: Roboto;
@@ -121,7 +121,14 @@ body #main_content header nav div {
 #valider:hover {
   cursor: pointer;
   border-radius: 5px;
+  transform: scale(1.1);
   transition: 0.4s;
+}
+
+.actionsSelect img:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  transition: 0.3s;
 }
 
 #popup-content{

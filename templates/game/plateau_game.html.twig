@@ -1,8 +1,8 @@
 <div id="game" >
     {% if (adversaire.actions['OFFRE']) and (adversaire.actions['OFFRE'] != 'done') %}
         <div id="popup">
-            <div id="popup-content">
-                <h2 style="text-align: center;border-bottom: white solid 2px ;border-top: white solid 2px ">Sélectionnez une carte à offrir</h2>
+            <div id="popup-content" class="actionsSelect">
+                <h2>Sélectionnez une carte à offrir à l'un des combattants.</h2>
                 <br>
                 {% for card in adversaire.actions['OFFRE'] %}
                     <input type="checkbox" name="carte_select" id="carte{{ card }}" value="{{ card }}" style="display: none" class="choixOffre">
@@ -89,7 +89,7 @@
     {% endfor %}
 </div>
 <div class="row">
-    <div class="col-8">
+    <div class="col-8 actionsSelect">
         {% for card in moi.handCards %}
             <input type="checkbox" name="carte_select" id="carte{{ card }}" value="{{ card }}" style="display: none" class="choixDepot">
             <label for="carte{{ card }}">
@@ -100,7 +100,7 @@
 
 
 
-    <div class="col-4" style="padding-bottom: 10px">
+    <div class="col-4 actionsSelect" style="padding-bottom: 10px">
 
         {% if moi.actions['SECRET'] %}
             <img width="50px" src="{{ asset('assets/cartes/secret.png') }}" alt="Secret" style="filter: grayscale(1);" >
@@ -130,8 +130,11 @@
             <br>
         {% endif %}
         <div class="row">
+            <div id="help"><h2>Chargement...</h2><br>Veuillez patienter. </div>
+            <br><br>
             <button id="valider" style="display: none">Valider action</button>
-        <div id="message">Chargement... </div>
+            <br><br>
+
 
     </div>
     </div>
