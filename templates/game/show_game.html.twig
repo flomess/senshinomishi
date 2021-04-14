@@ -69,8 +69,8 @@
     <script>
         let boucle
         $(document).ready(function(){
-            $("input:checkbox").not(":checked").attr("disabled", true);
-            boucle = setInterval(refreshGame, 3000);
+           // $("input:checkbox").not(":checked").attr("disabled", true);
+            boucle = setInterval(refreshGame(), 2000)
         })
         $(document).on('click', '#finDeTour', function() {
             //mettre à jour game en changeant quiJoue
@@ -81,18 +81,16 @@
             $.ajax({
                 url: "{{ path('get_tour', {game: game.id}) }}",
                 success: function(data) {
-                    console.log(data)
+                    //$('#board').load("{{ path('refresh_plateau_game', {game:game.id}) }}")
                     if (data === false) {
                         $('#help').html('<h2>Tour adverse</h2><br> Veuillez patienter pendant que votre adversaire joue.<br><br>')
 
-                        $('#plateau').load("{{ path('refresh_plateau_game', {game:game.id}) }}")
                     } else {
-                        $('#help').html('<h2>C\'est à vous !</h2><br> Veuillez sélectionner une action.<br><br>')
                         if (data === true){
-                            $('#plateau').load("{{ path('refresh_plateau_game', {game:game.id}) }}")
+                            $('#help').html('<h2>C\'est à vous !</h2><br> Veuillez sélectionner une action.<br><br>')
                         }
-
                         clearInterval(boucle)
+
                     }
                 },
                 error: function(){
@@ -146,19 +144,23 @@
             });
             action = 'offre' //mémorise l'action en cours
         })
-        $(document).on('click', '.choixOffre', function(){
 
-                var bol = $("input:checkbox:checked").length >= 1;
-                $("input:checkbox").not(":checked").attr("disabled", bol);
-                if ($("input:checkbox:checked").length >= 1){
-                    $('#valider').fadeIn();
+
+        $(document).on('click', '#echange', function(){
+            $('#valider').hide();
+            $('#help').html('<h2>Échange</h2><br> Sélectionnez quatre cartes que vous devrez grouper 2 par 2. Votre adversaire choisira l\'un de ces groupes.<br><br>')
+            $('input:checkbox').prop('checked', false).prop('disabled', false)
+            $('input:checkbox').click(function () {
+                var bol = $('input:checkbox:checked').length >= 4;
+                $('input:checkbox').not('checked').attr('disabled', bol);
+                if (bol === true){
+                    $('#valider').show();
                 } else {
-                    $('#valider').fadeOut();
+                    $('#valider').hide();
                 }
-
-            action = 'offre_valid' //mémorise l'action en cours
-
-        });
+            });
+            action = 'echange' //mémorise l'action en cours
+        })
         $(document).on('click', '#valider', function(){
             $('#valider').hide();
             switch (action) {
@@ -194,6 +196,31 @@
                     }
                     break;
                 case 'echange':
+                    donneesAction = {
+                        action: 'echange',
+                        carte: {
+                            card1:document.querySelectorAll('input[name="carte_select"]:checked')[0].value,
+                            card2:document.querySelectorAll('input[name="carte_select"]:checked')[1].value,
+                            card3:document.querySelectorAll('input[name="carte_select"]:checked')[2].value,
+                            card4:document.querySelectorAll('input[name="carte_select"]:checked')[3].value
+                        }
+                    }
+                    break;
+                case 'echange_group':
+                    donneesAction = {
+                        action: 'echange_group',
+                        carte: {
+                            card1:document.querySelectorAll('input[name="carte_select"]:checked')[0].value,
+                            card2:document.querySelectorAll('input[name="carte_select"]:checked')[1].value
+                        },
+
+                    }
+                    break;
+                case 'echange_valid':
+                    donneesAction = {
+                        action: 'echange_valid',
+                        carte: $('input[name="carte_select"]:checked').val()
+                    }
                     break;
             }
             $.ajax({

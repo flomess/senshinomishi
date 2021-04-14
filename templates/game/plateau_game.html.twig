@@ -1,4 +1,11 @@
 <div id="game" >
+
+    <div class="row left-board">
+        <div id="help"><h2>Chargement...</h2><br>Veuillez patienter. </div>
+        <br><br>
+        <button id="valider" style="display: none">Valider action</button>
+        <br><br>
+    </div>
     {% if (adversaire.actions['OFFRE']) and (adversaire.actions['OFFRE'] != 'done') %}
         <div id="popup">
             <div id="popup-content" class="actionsSelect">
@@ -13,6 +20,89 @@
                 <br><button id="valider" style="display: none">Valider choix</button>
             </div>
         </div>
+        <script>
+            $(document).on('click', '.choixOffre', function(){
+
+                var bol = $("input:checkbox:checked").length >= 1;
+                $("input:checkbox").not(":checked").attr("disabled", bol);
+                if (bol === true){
+                    $('#valider').fadeIn();
+                } else {
+                    $('#valider').fadeOut();
+                }
+
+                action = 'offre_valid' //mémorise l'action en cours
+
+            });
+        </script>
+    {% endif %}
+    {% if (moi.actions['ECHANGE']) and (tour == 'moi') and (moi.actions['ECHANGE'] != 'done')%}
+        <div id="popup">
+            <div id="popup-content" class="actionsSelect">
+                <h2>Sélectionnez deux cartes à grouper ensemble.</h2>
+                <br>
+                {% for card in moi.actions['ECHANGE'] %}
+                    <input type="checkbox" name="carte_select" id="carte{{ card }}" value="{{ card }}" style="display: none;" class="choixEchange">
+                    <label for="carte{{ card }}">
+                        <img style=" margin: 15px;" height="100px" src="{{ asset('assets/cartes/'~cards[card].picture) }}">
+                    </label>
+                {% endfor %}
+                <br><button id="valider" style="display: none">Valider choix</button>
+            </div>
+        </div>
+        <script>
+            $('label').click(function () {
+                $('#valider').hide();
+                var bol = $("input:checkbox:checked").length >= 2
+                $("input:checkbox").not(":checked").attr("disabled", bol)
+
+            if ($("input:checkbox:checked").length >= 1){
+                $('#valider').show();
+            } else {
+                $('#valider').hide();
+            }
+
+            action = 'echange_group'
+            });
+        </script>
+    {% endif %}
+   {% if (adversaire.actions['ECHANGE']) and (tour == 'moi') and (adversaire.actions['ECHANGE'] != 'done')%}
+    <div id="popup">
+        <div id="popup-content" class="actionsSelect">
+            <h2>Sélectionnez un groupe de cartes.</h2>
+            <br>
+            <input type="checkbox" name="carte_select" id="group1" value="group1" style="display: none;" class="choixEchange">
+            <label for="group1">
+                {% for card in adversaire.actions['ECHANGE']['group1'] %}
+                        <img style=" margin: 15px;" height="100px" src="{{ asset('assets/cartes/'~cards[card].picture) }}">
+                {% endfor %}
+            </label>
+            ou
+            <input type="checkbox" name="carte_select" id="group2" value="group2" style="display: none;" class="choixEchange">
+            <label for="group2">
+                {% for card in adversaire.actions['ECHANGE']['group2'] %}
+                    <img style=" margin: 15px;" height="100px" src="{{ asset('assets/cartes/'~cards[card].picture) }}">
+                {% endfor %}
+            </label>
+            <br><button id="valider" style="display: none">Valider choix</button>
+        </div>
+    </div>
+    <script>
+
+        $("input:checkbox").click(function () {
+            $('#valider').hide();
+            var bol = $("input:checkbox:checked").length >= 1
+            $("input:checkbox").not(":checked").attr("disabled", bol)
+
+            if (bol === true){
+                $('#valider').show();
+            } else {
+                $('#valider').hide();
+            }
+
+            action = 'echange_valid'
+        });
+    </script>
     {% endif %}
 <div class="row">
     <div class="col-8" style="text-align: center">
@@ -99,7 +189,7 @@
     </div>
 
 
-
+{% if tour == 'moi' %}
     <div class="col-4 actionsSelect" style="padding-bottom: 10px">
 
         {% if moi.actions['SECRET'] %}
@@ -129,14 +219,35 @@
             <img width="50px" src="{{ asset('assets/cartes/echange.png') }}" alt="Echange" id="echange">
             <br>
         {% endif %}
-        <div class="row">
-            <div id="help"><h2>Chargement...</h2><br>Veuillez patienter. </div>
-            <br><br>
-            <button id="valider" style="display: none">Valider action</button>
-            <br><br>
+        {% else %}
+            {% if moi.actions['SECRET'] %}
+                <img width="50px" src="{{ asset('assets/cartes/secret.png') }}" alt="Secret" style="filter: grayscale(1);" >
+            {% else %}
+                <img width="50px" src="{{ asset('assets/cartes/secret.png') }}" alt="Secret" >
 
+            {% endif %}
 
-    </div>
+            {% if moi.actions['DEPOT'] %}
+                <img width="50px" src="{{ asset('assets/cartes/dépot.png') }}" alt="Secret" style="filter: grayscale(1);" >
+
+            {% else %}
+                <img width="50px" src="{{ asset('assets/cartes/dépot.png') }}" alt="Dépot" >
+            {% endif %}
+            {% if moi.actions['OFFRE'] %}
+                <img width="50px" src="{{ asset('assets/cartes/offre.png') }}" alt="Secret" style="filter: grayscale(1);" >
+
+            {% else %}
+                <img width="50px" src="{{ asset('assets/cartes/offre.png') }}" alt="Offre">
+
+            {% endif %}
+            {% if moi.actions['ECHANGE'] %}
+                <img width="50px" src="{{ asset('assets/cartes/echange.png') }}" alt="Secret" style="filter: grayscale(1);">
+
+            {% else %}
+                <img width="50px" src="{{ asset('assets/cartes/echange.png') }}" alt="Echange">
+                <br>
+            {% endif %}
+        {% endif %}
     </div>
 
 

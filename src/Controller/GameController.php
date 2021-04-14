@@ -65,7 +65,7 @@ class GameController extends AbstractController
 
             $tMainJ1 = [];
             $tMainJ2 = [];
-            for ($i = 0; $i < 6; $i++) {
+            for ($i = 0; $i < 7; $i++) {
                 //on distribue 6 cartes aux deux joueurs
                 $carte = array_pop($tCards);
                 $tMainJ1[] = $carte->getId();
@@ -166,6 +166,11 @@ class GameController extends AbstractController
             $moi['actions'] = $game->getRounds()[0]->getUser1Action();
             $moi['board'] = $game->getRounds()[0]->getUser1Board();
             $moi['pseudo'] = $this->getUser()->getUsername();
+            if ($game->getQuiJoue() === 1) {
+                $tour = 'moi';
+            } else {
+                $tour = 'adversaire';
+            }
             $adversaire['pseudo'] = $game->getUser2()->getUsername();
             $adversaire['handCards'] = $game->getRounds()[0]->getUser2Cards();
             $adversaire['actions'] = $game->getRounds()[0]->getUser2Action();
@@ -175,6 +180,11 @@ class GameController extends AbstractController
             $moi['actions'] = $game->getRounds()[0]->getUser2Action();
             $moi['board'] = $game->getRounds()[0]->getUser2Board();
             $moi['pseudo'] = $this->getUser()->getUsername();
+            if ($game->getQuiJoue() === 2) {
+                $tour = 'moi';
+            } else {
+                $tour = 'adversaire';
+            }
             $adversaire['pseudo'] = $game->getUser1()->getUsername();
             $adversaire['handCards'] = $game->getRounds()[0]->getUser1Cards();
             $adversaire['actions'] = $game->getRounds()[0]->getUser1Action();
@@ -188,7 +198,8 @@ class GameController extends AbstractController
             'set' => $game->getRounds()[0],
             'cards' => $tCards,
             'moi' => $moi,
-            'adversaire' => $adversaire
+            'adversaire' => $adversaire,
+            'tour' => $tour
         ]);
     }
 
@@ -351,6 +362,127 @@ class GameController extends AbstractController
                     $round->setUser1Board($board1);
                     $round->setUser2Board($board2);
                     $round->setUser1Action($actions); //je mets à jour le tableau
+                    $game->setQuiJoue(2);
+                }
+                break;
+            case 'echange':
+                $cartes = $request->request->get('carte');
+                if ($joueur === 1) {
+                    $actions = $round->getUser1Action(); //un tableau...
+                    $actions['ECHANGE'][] = $cartes['card1'];
+                    $actions['ECHANGE'][] = $cartes['card2'];
+                    $actions['ECHANGE'][] = $cartes['card3'];
+                    $actions['ECHANGE'][] = $cartes['card4'];
+                    $round->setUser1Action($actions); //je mets à jour le tableau
+                    $main = $round->getUser1Cards();
+                    $indexCarte1 = array_search($cartes['card1'], $main);
+                    $indexCarte2 = array_search($cartes['card2'], $main);
+                    $indexCarte3 = array_search($cartes['card3'], $main);
+                    $indexCarte4 = array_search($cartes['card4'], $main);
+                    unset($main[$indexCarte1]); //je supprime la carte de ma main
+                    unset($main[$indexCarte2]); //je supprime la carte de ma main
+                    unset($main[$indexCarte3]); //je supprime la carte de ma main
+                    unset($main[$indexCarte4]); //je supprime la carte de ma main
+                    $stack = $round->getStack();
+                    $cartePiochee = array_shift($stack);
+                    $main[] = $cartePiochee;
+                    $round->setUser1Cards($main);
+                    $round->setStack($stack);
+                } else {
+                    $actions = $round->getUser2Action(); //un tableau...
+                    $actions['ECHANGE'][] = $cartes['card1'];
+                    $actions['ECHANGE'][] = $cartes['card2'];
+                    $actions['ECHANGE'][] = $cartes['card3'];
+                    $actions['ECHANGE'][] = $cartes['card4'];
+                    $round->setUser2Action($actions); //je mets à jour le tableau
+                    $main = $round->getUser2Cards();
+                    $indexCarte1 = array_search($cartes['card1'], $main);
+                    $indexCarte2 = array_search($cartes['card2'], $main);
+                    $indexCarte3 = array_search($cartes['card3'], $main);
+                    $indexCarte4 = array_search($cartes['card4'], $main);
+                    unset($main[$indexCarte1]); //je supprime la carte de ma main
+                    unset($main[$indexCarte2]); //je supprime la carte de ma main
+                    unset($main[$indexCarte3]); //je supprime la carte de ma main
+                    unset($main[$indexCarte4]); //je supprime la carte de ma main
+                    $stack = $round->getStack();
+                    $cartePiochee = array_shift($stack);
+                    $main[] = $cartePiochee;
+                    $round->setUser2Cards($main);
+                    $round->setStack($stack);
+                }
+                break;
+            case 'echange_group':
+                $carte = $request->request->get('carte');
+                if ($joueur === 1) {
+                    $actions = $round->getUser1Action(); //un tableau...
+                    $echange = $actions['ECHANGE'];
+                    $carteChoisie1 = array_search($carte['card1'], $echange);
+                    array_splice($echange, $carteChoisie1, 1);
+                    $carteChoisie2 = array_search($carte['card2'], $echange);
+                    array_splice($echange, $carteChoisie2, 1);
+                    $actions['ECHANGE'] = [];
+                    $actions['ECHANGE']['group1'][] = $carte['card1'];
+                    $actions['ECHANGE']['group1'][] = $carte['card2'];
+                    $actions['ECHANGE']['group2'] = $echange;
+                    $round->setUser1Action($actions);
+                    $game->setQuiJoue(2);
+
+                } else {
+                    $actions = $round->getUser2Action(); //un tableau...
+                    $echange = $actions['ECHANGE'];
+                    $carteChoisie1 = array_search($carte['card1'], $echange);
+                    array_splice($echange, $carteChoisie1, 1);
+                    $carteChoisie2 = array_search($carte['card2'], $echange);
+                    array_splice($echange, $carteChoisie2, 1);
+                    $actions['ECHANGE'] = [];
+                    $actions['ECHANGE']['group1'][] = $carte['card1'];
+                    $actions['ECHANGE']['group1'][] = $carte['card2'];
+                    $actions['ECHANGE']['group2'] = $echange;
+                    $round->setUser2Action($actions);
+                    $game->setQuiJoue(1);
+                }
+                break;
+            case 'echange_valid':
+                $groupChoisi = $request->request->get('carte');
+                if ($joueur === 1) {
+                    $actions = $round->getUser2Action(); //un tableau...
+                    $board1 = $round->getUser1Board();
+                    $board2 = $round->getUser2Board();
+                    if($groupChoisi == 'group1'){
+                        $board1[] = $actions['ECHANGE']['group1'][0];
+                        $board1[] = $actions['ECHANGE']['group1'][1];
+                        $board2[] = $actions['ECHANGE']['group2'][0];
+                        $board2[] = $actions['ECHANGE']['group2'][1];
+                    } else {
+                        $board2[] = $actions['ECHANGE']['group1'][0];
+                        $board2[] = $actions['ECHANGE']['group1'][1];
+                        $board1[] = $actions['ECHANGE']['group2'][0];
+                        $board1[] = $actions['ECHANGE']['group2'][1];
+                    }
+                    $actions['ECHANGE'] = 'done';
+                    $round->setUser2Action($actions);
+                    $round->setUser1Board($board1);
+                    $round->setUser2Board($board2);
+                    $game->setQuiJoue(1);
+                } else {
+                    $actions = $round->getUser1Action(); //un tableau...
+                    $board1 = $round->getUser1Board();
+                    $board2 = $round->getUser2Board();
+                    if ($groupChoisi == 'group1') {
+                        $board2[] = $actions['ECHANGE']['group1'][0];
+                        $board2[] = $actions['ECHANGE']['group1'][1];
+                        $board1[] = $actions['ECHANGE']['group2'][0];
+                        $board1[] = $actions['ECHANGE']['group2'][1];
+                    } else {
+                        $board1[] = $actions['ECHANGE']['group1'][0];
+                        $board1[] = $actions['ECHANGE']['group1'][1];
+                        $board2[] = $actions['ECHANGE']['group2'][0];
+                        $board2[] = $actions['ECHANGE']['group2'][1];
+                    }
+                    $actions['ECHANGE'] = 'done';
+                    $round->setUser1Action($actions);
+                    $round->setUser1Board($board1);
+                    $round->setUser2Board($board2);
                     $game->setQuiJoue(2);
                 }
                 break;
