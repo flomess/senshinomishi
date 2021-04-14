@@ -236,7 +236,11 @@ class GameController extends AbstractController
                     unset($main[$indexCarte]); //je supprime la carte de ma main
                     $stack = $round->getStack();
                     $cartePiochee = array_shift($stack);
-                    $main[] = $cartePiochee;
+                    if ($cartePiochee == ''){
+                        $main = [];
+                    } else {
+                        $main[] = $cartePiochee;
+                    }
                     $round->setUser1Cards($main);
                     $round->setStack($stack);
                     $game->setQuiJoue(2);
@@ -249,7 +253,11 @@ class GameController extends AbstractController
                     unset($main[$indexCarte]); //je supprime la carte de ma main
                     $stack = $round->getStack();
                     $cartePiochee = array_shift($stack);
-                    $main[] = $cartePiochee;
+                    if ($cartePiochee == ''){
+                        $main = [];
+                    } else {
+                        $main[] = $cartePiochee;
+                    }
                     $round->setUser2Cards($main);
                     $round->setStack($stack);
                     $game->setQuiJoue(1);
@@ -268,7 +276,11 @@ class GameController extends AbstractController
                     unset($main[$indexCarte2]); //je supprime la carte de ma main
                     $stack = $round->getStack();
                     $cartePiochee = array_shift($stack);
-                    $main[] = $cartePiochee;
+                    if ($cartePiochee == ''){
+                        $main = [];
+                    } else {
+                        $main[] = $cartePiochee;
+                    }
                     $round->setUser1Cards($main);
                     $round->setStack($stack);
                     $game->setQuiJoue(2);
@@ -283,7 +295,11 @@ class GameController extends AbstractController
                     unset($main[$indexCarte2]); //je supprime la carte de ma main
                     $stack = $round->getStack();
                     $cartePiochee = array_shift($stack);
-                    $main[] = $cartePiochee;
+                    if ($cartePiochee == ''){
+                        $main = [];
+                    } else {
+                        $main[] = $cartePiochee;
+                    }
                     $round->setUser2Cards($main);
                     $round->setStack($stack);
                     $game->setQuiJoue(1);
@@ -306,7 +322,11 @@ class GameController extends AbstractController
                     unset($main[$indexCarte3]); //je supprime la carte de ma main
                     $stack = $round->getStack();
                     $cartePiochee = array_shift($stack);
-                    $main[] = $cartePiochee;
+                    if ($cartePiochee == ''){
+                        $main = [];
+                    } else {
+                        $main[] = $cartePiochee;
+                    }
                     $round->setUser1Cards($main);
                     $round->setStack($stack);
                     $game->setQuiJoue(2);
@@ -325,7 +345,11 @@ class GameController extends AbstractController
                     unset($main[$indexCarte3]); //je supprime la carte de ma main
                     $stack = $round->getStack();
                     $cartePiochee = array_shift($stack);
-                    $main[] = $cartePiochee;
+                    if ($cartePiochee == ''){
+                        $main = [];
+                    } else {
+                        $main[] = $cartePiochee;
+                    }
                     $round->setUser2Cards($main);
                     $round->setStack($stack);
                     $game->setQuiJoue(1);
@@ -385,7 +409,11 @@ class GameController extends AbstractController
                     unset($main[$indexCarte4]); //je supprime la carte de ma main
                     $stack = $round->getStack();
                     $cartePiochee = array_shift($stack);
-                    $main[] = $cartePiochee;
+                    if ($cartePiochee == ''){
+                        $main = [];
+                    } else {
+                        $main[] = $cartePiochee;
+                    }
                     $round->setUser1Cards($main);
                     $round->setStack($stack);
                 } else {
@@ -406,7 +434,11 @@ class GameController extends AbstractController
                     unset($main[$indexCarte4]); //je supprime la carte de ma main
                     $stack = $round->getStack();
                     $cartePiochee = array_shift($stack);
-                    $main[] = $cartePiochee;
+                    if ($cartePiochee == ''){
+                        $main = [];
+                    } else {
+                        $main[] = $cartePiochee;
+                    }
                     $round->setUser2Cards($main);
                     $round->setStack($stack);
                 }

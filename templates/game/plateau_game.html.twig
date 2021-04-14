@@ -1,7 +1,13 @@
 <div id="game" >
 
     <div class="row left-board">
-        <div id="help"><h2>Chargement...</h2><br>Veuillez patienter. </div>
+        <div id="help">
+            {% if tour =='moi' %}
+            <h2>C'est à vous !</h2><br> Veuillez sélectionner une action.<br><br>
+            {% else %}
+                <h2>Tour adverse</h2><br> Veuillez patienter pendant que votre adversaire joue.<br><br>
+            {% endif %}
+        </div>
         <br><br>
         <button id="valider" style="display: none">Valider action</button>
         <br><br>
@@ -180,12 +186,14 @@
 </div>
 <div class="row">
     <div class="col-8 actionsSelect">
+        {% if moi.handCards %}
         {% for card in moi.handCards %}
             <input type="checkbox" name="carte_select" id="carte{{ card }}" value="{{ card }}" style="display: none" class="choixDepot">
             <label for="carte{{ card }}">
              <img height="70px" src="{{ asset('assets/cartes/'~cards[card].picture) }}">
             </label>
         {% endfor %}
+        {% endif %}
     </div>
 
 

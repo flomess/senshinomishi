@@ -66,11 +66,23 @@
 {% endblock %}
 
 {% block javascripts %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
         let boucle
         $(document).ready(function(){
            // $("input:checkbox").not(":checked").attr("disabled", true);
-            boucle = setInterval(refreshGame(), 2000)
+            boucle = setInterval(refreshGame, 2000);
+            let elm = document.getElementById('chat');
+            $("#chat_icon").click(function(){
+                if(elm.className === ''){
+                    elm.className = "active";
+                    document.getElementById('chat_icon').className = "active";
+
+                } else if(elm.className === 'active'){
+                    elm.className = "";
+                    document.getElementById('chat_icon').className = "";
+                }
+            });
         })
         $(document).on('click', '#finDeTour', function() {
             //mettre à jour game en changeant quiJoue
@@ -81,17 +93,12 @@
             $.ajax({
                 url: "{{ path('get_tour', {game: game.id}) }}",
                 success: function(data) {
-                    //$('#board').load("{{ path('refresh_plateau_game', {game:game.id}) }}")
-                    if (data === false) {
-                        $('#help').html('<h2>Tour adverse</h2><br> Veuillez patienter pendant que votre adversaire joue.<br><br>')
-
-                    } else {
-                        if (data === true){
-                            $('#help').html('<h2>C\'est à vous !</h2><br> Veuillez sélectionner une action.<br><br>')
-                        }
+                    if (data === true) {
+                        $('#board').load("{{ path('refresh_plateau_game', {game:game.id}) }}")
                         clearInterval(boucle)
-
+                    } else {
                     }
+
                 },
                 error: function(){
                 }
@@ -228,7 +235,9 @@
                 data: donneesAction,
                 method: 'POST',
                 success: function(data) {
-                   refreshGame()
+                    boucle = setInterval(refreshGame, 2000);
+                    $('#board').load("{{ path('refresh_plateau_game', {game:game.id}) }}")
+                    $('#help').html('<h2>Tour adverse</h2><br> Veuillez patienter pendant que votre adversaire joue.<br><br>')
                 },
                 error: function(){
                 }
@@ -236,22 +245,6 @@
         })
 
     </script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-    <script>
-        $(document).ready(function(){
-            //script 1
-            let elm = document.getElementById('chat');
-            $("#chat_icon").click(function(){
-                if(elm.className === ''){
-                    elm.className = "active";
-                    document.getElementById('chat_icon').className = "active";
 
-                } else if(elm.className === 'active'){
-                    elm.className = "";
-                    document.getElementById('chat_icon').className = "";
-                }
-            });
-        })
-    </script>
 {% endblock %}
