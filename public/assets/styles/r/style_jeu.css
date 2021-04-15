@@ -316,6 +316,13 @@ body #main_content #board #game {
   margin: 20px;
 }
 
+.jeton {
+  vertical-align: center;
+  position: absolute;
+  padding-left: 15px;
+  padding-top: 60px;
+}
+
 /*# sourceMappingURL=style_jeu.css.map */
 
 /*# sourceMappingURL=style_jeu.css.map */
