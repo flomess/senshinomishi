@@ -80,11 +80,12 @@ class LoginAuthenticator extends AbstractFormLoginAuthenticator implements Passw
     public function checkCredentials($credentials, UserInterface $user)
     {
         if($this->passwordEncoder->isPasswordValid($user, $credentials['password'])){
-            if($user->isVerified()){
-                return true;
-            } else {
-                throw new CustomUserMessageAuthenticationException('Votre adresse mail n\'a pas été vérifiée.');
-            }
+            return true;
+            //if($user->isVerified()){
+
+            //} else {
+            //    throw new CustomUserMessageAuthenticationException('Votre adresse mail n\'a pas été vérifiée.');
+            //}
         } else {
             throw new CustomUserMessageAuthenticationException('Mot de passe incorrect.');
 

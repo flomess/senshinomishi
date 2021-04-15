@@ -19,7 +19,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="27c6abd4-2676-4f23-8b17-7dc3e4dc4454" name="Default Changelist" comment="" />
+    <list default="true" id="27c6abd4-2676-4f23-8b17-7dc3e4dc4454" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Security/LoginAuthenticator.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Security/LoginAuthenticator.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -202,6 +205,7 @@
       <workItem from="1618314630288" duration="12492000" />
       <workItem from="1618332214648" duration="9312000" />
       <workItem from="1618405567228" duration="16287000" />
+      <workItem from="1618482957866" duration="1034000" />
     </task>
     <servers />
   </component>
