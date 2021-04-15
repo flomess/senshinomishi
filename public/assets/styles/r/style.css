@@ -83,7 +83,7 @@ section .firstcontainer .secondcontainer .content {
 
 .last {
   background-color: rgba(255, 255, 255, 0.3);
-  height: 100%;
+  height: 100vh;
   display: inline-block;
   float: right;
 }
@@ -167,6 +167,10 @@ footer img, footer h3 {
   vertical-align: middle;
   color: white;
   padding: 10px;
+}
+
+h5 {
+  text-align: center;
 }
 
 /*# sourceMappingURL=style.css.map */
